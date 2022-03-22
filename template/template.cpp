@@ -1,25 +1,26 @@
 #include "template.hpp"
 
 // ---------------------- Constructors && Destructor ----------------------- //
-# define _ARGS << "Args : var " << var
-# define _O_OPEN(COLOR_CODE) "\033[" << COLOR_CODE << "m" << "< "
-# define _O_CLOSE "\033[0m" << " " << __PRETTY_FUNCTION__  << " > " _ARGS
+# define _ARGS "Args : var " << var
+# define _AUTO(COLOR_CODE, TEXT) "\033[" << COLOR_CODE << "m" \
+	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
+	<< "\033[0m" << _ARGS
 
 Template::Template( int input) : var(input)
 {
-	std::cout << _O_OPEN(32) << "Simple Constructor" << _O_CLOSE
+	std::cout << _AUTO(32, "Simple Constructor")
 		<< std::endl;
 }
 
 Template::Template( const Template &copy) : var(copy.var)
 {
-	std::cout << _O_OPEN(32) << "Copy Constructor" << _O_CLOSE
+	std::cout << _AUTO(32, "Copy Constructor")
 		<< std::endl;
 }
 
 Template::~Template( void )
 {
-	std::cout << _O_OPEN(31) << "Destructor called" << _O_CLOSE
+	std::cout << _AUTO(31, "Destructor called")
 		<< std::endl;
 }
 
@@ -27,16 +28,14 @@ Template::~Template( void )
 
 int	Template::getVar( void )
 {
-	std::cout << _O_OPEN(33) << "Getter" << _O_CLOSE
+	std::cout << _AUTO(33, "Getter")
 		<< std::endl;
 	return var;
 }
 
 void	Template::setVar( int input )
 {
-	std::cout << _O_OPEN(34)
-		<< "Setter"
-		<< _O_CLOSE
+	std::cout << _AUTO(34, "Setter")
 		<< " Old " << var << " New " << input
 		<< std::endl;
 	var = input;

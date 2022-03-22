@@ -8,12 +8,12 @@ class Template
 {
 public:
 // -------------------------------- Public --------------------------------- //
-
-	int	var;
+	static void	*shared;	// static, means only one shared by all instances
 // -------------------------------- Methods -------------------------------- //
 
 	int		getVar( void );
 	void	setVar( int input );
+	int		isEqual( Template t );
 
 // ---------------------- Constructors && Destructor ----------------------- //
 	Template( int input );				// Simple Constructor
@@ -22,6 +22,8 @@ public:
 
 private:
 // -------------------------------- Private -------------------------------- //
+	int	var;
+
 protected:
 // ------------------------------- Protected ------------------------------- //
 };

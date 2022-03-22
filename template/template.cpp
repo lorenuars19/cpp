@@ -36,10 +36,19 @@ int	Template::getVar( void )
 
 void	Template::setVar( int input )
 {
-	std::cout << _O_OPEN(33)
+	std::cout << _O_OPEN(34)
 		<< "Setter"
 		<< _O_CLOSE
 		<< " Old " << var << " New " << input
 		<< std::endl;
 	var = input;
+}
+
+int	Template::isEqual( Template t)
+{
+	if (this->getVar() == t.getVar())
+	{
+		return this->getVar();
+	}
+	return 0;
 }

@@ -1,46 +1,63 @@
 #include "template.hpp"
 
-// ---------------------- Constructors && Destructor ----------------------- //
-# define _ARGS "Args : var " << var
-# define _AUTO(COLOR_CODE, TEXT) "\033[" << COLOR_CODE << ";1m" \
+# define _ARGS "Args : var " << _var
+# define _AUTO(COLOR_CODE, TEXT) "\e[" << COLOR_CODE << ";1m" \
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
-	<< "\033[0m" << _ARGS
+	<< "\e[0m" << _ARGS
 
-Template::Template( int input) : var(input)
+// ----------------------------- Constructors ------------------------------ //
+Template::Template( int input)
 {
-	std::cout << _AUTO(32, "Simple Constructor")
+	_var = 0;
+	std::cout << _AUTO(32, "Default Constructor")
 		<< std::endl;
 }
 
-Template::Template( const Template &copy) : var(copy.var)
+Template::Template( const Template &copy)
 {
+	_var = copy.getVar();
 	std::cout << _AUTO(32, "Copy Constructor")
 		<< std::endl;
 }
 
+Template::Template( int var)
+{
+	_var = var;
+	std::cout << _AUTO(32, "Fields Constructor")
+		<< std::endl;
+}
+
+// ------------------------------ Destructor ------------------------------- //
 Template::~Template( void )
 {
 	std::cout << _AUTO(31, "Destructor called")
 		<< std::endl;
 }
+// ------------------------------- Operators ------------------------------- //
 
-// -------------------------------- Methods -------------------------------- //
+Template & Template::operator=(const Template &assign)
+{
+	_var = assign.getVar();
+	return *this;
+}
 
-int	Template::getVar( void )
+// --------------------------- Getters && Setters -------------------------- //
+int	Template::getVar( void ) const
 {
 	std::cout << _AUTO(33, "Getter")
 		<< std::endl;
-	return var;
+	return _var;
 }
 
 void	Template::setVar( int input )
 {
 	std::cout << _AUTO(34, "Setter")
-		<< " Old " << var << " New " << input
+		<< " Old " << _var << " New " << input
 		<< std::endl;
-	var = input;
+	_var = input;
 }
 
+// --------------------------------- Methods ------------------------------- //
 int	Template::isEqual( Template t)
 {
 	if (this->getVar() == t.getVar())

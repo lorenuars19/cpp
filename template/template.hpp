@@ -1,30 +1,32 @@
-#ifndef _TEMPLATE_HPP_
-# define _TEMPLATE_HPP_
+#ifndef TEMPLATE_HPP
+# define TEMPLATE_HPP
 
 # include <iostream>
 
 class Template
 {
-public:
-// -------------------------------- Public --------------------------------- //
-	static void	*shared;	// static, means only one shared by all instances
-// -------------------------------- Methods -------------------------------- //
+	public:
+// ----------------------------- Constructors ------------------------------ //
+		Template( int input );							// Simple Constructor
+		Template( const Template &copy);				// Copy Constructor
 
-	int		getVar( void );
-	void	setVar( int input );
-	int		isEqual( Template t );
+// ------------------------------ Destructor ------------------------------- //
+		~Template( void );								// Destructor
 
-// ---------------------- Constructors && Destructor ----------------------- //
-	Template( int input );				// Simple Constructor
-	Template( const Template &copy);	// Copy Constructor
-	~Template( void );					// Destructor
+// ------------------------------- Operators ------------------------------- //
+		Template & operator=(const Template &assign);
+		// Copy Assignement Operator
+
+// --------------------------- Getters && Setters -------------------------- //
+		int		getVar( void ) const;
+		void	setVar( int input );
+
+// --------------------------------- Methods ------------------------------- //
+		int		isEqual( Template t );
 
 private:
-// -------------------------------- Private -------------------------------- //
-	int	var;
+	int	_var;
 
-protected:
-// ------------------------------- Protected ------------------------------- //
 };
 
-#endif // _TEMPLATE_HPP_
+#endif // TEMPLATE_HPP

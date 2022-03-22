@@ -23,8 +23,6 @@ HEADERS = \
 	./includes/FortyTwo.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
-	FortyTwo.cpp \
-	main.cpp \
 
 OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 

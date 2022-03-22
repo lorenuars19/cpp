@@ -7,11 +7,12 @@ class Template
 {
 	public:
 // ----------------------------- Constructors ------------------------------ //
-		Template( int input );							// Simple Constructor
-		Template( const Template &copy);				// Copy Constructor
+		Template( void );					// Default Constructor
+		Template( int input );				// Fields Constructor
+		Template( const Template &copy);	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~Template( void );								// Destructor
+		~Template( void );					// Destructor
 
 // ------------------------------- Operators ------------------------------- //
 		Template & operator=(const Template &assign);

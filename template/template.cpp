@@ -6,21 +6,21 @@
 	<< "\e[0m" << _ARGS
 
 // ----------------------------- Constructors ------------------------------ //
-Template::Template( int input)
+Template::Template( void )
 {
 	_var = 0;
 	std::cout << _AUTO(32, "Default Constructor")
 		<< std::endl;
 }
 
-Template::Template( const Template &copy)
+Template::Template( const Template &copy )
 {
 	_var = copy.getVar();
 	std::cout << _AUTO(32, "Copy Constructor")
 		<< std::endl;
 }
 
-Template::Template( int var)
+Template::Template( int var )
 {
 	_var = var;
 	std::cout << _AUTO(32, "Fields Constructor")

@@ -10,7 +10,19 @@ INCLUDES = -I include/
 BIN_DIR = ./bin
 SRC_DIR = .
 SRC_EXT = cpp
+###▼▼▼<src-updater-do-not-edit-or-remove>▼▼▼
+# **************************************************************************** #
+# **   Generated with https://github.com/lorenuars19/makefile-src-updater   ** #
+# **************************************************************************** #
+
 SRCS = \
+	./src/FortyTwo.cpp \
+	./src/main.cpp \
+
+HEADERS = \
+	./includes/FortyTwo.hpp\
+
+###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 	FortyTwo.cpp \
 	main.cpp \
 

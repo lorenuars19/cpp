@@ -7,12 +7,12 @@ class FortyTwo
 {
 	public:
 // ----------------------------- Constructors ------------------------------ //
-		FortyTwo( void );					// Default Constructor
-		FortyTwo( int input );				// Fields Constructor
+		FortyTwo( void );	// Default Constructor
+		FortyTwo( int var );	// Fields Constructor
 		FortyTwo( const FortyTwo &copy);	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~FortyTwo( void );					// Destructor
+		~FortyTwo( void );	// Destructor
 
 // ------------------------------- Operators ------------------------------- //
 		FortyTwo & operator=(const FortyTwo &assign);

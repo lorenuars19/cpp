@@ -2,7 +2,7 @@
 
 // ---------------------- Constructors && Destructor ----------------------- //
 # define _ARGS "Args : var " << var
-# define _AUTO(COLOR_CODE, TEXT) "\033[" << COLOR_CODE << "m" \
+# define _AUTO(COLOR_CODE, TEXT) "\033[" << COLOR_CODE << ";1m" \
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
 	<< "\033[0m" << _ARGS
 

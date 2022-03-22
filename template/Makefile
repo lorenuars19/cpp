@@ -1,4 +1,4 @@
-NAME = exec
+NAME = exec.out
 
 CXX ?= g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -8,12 +8,12 @@ BIN_DIR = ./bin
 SRC_DIR = .
 SRC_EXT = cpp
 SRCS = \
-	template.cpp \
+	FortyTwo.cpp \
 	main.cpp \
 
 OBJS ?= $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
-all : $(BIN_DIR) $(NAME)
+all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
@@ -22,7 +22,7 @@ $(NAME) : $(OBJS)
 $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 
-$(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT)
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
 	@printf "\e[32;1m+++ $@ -- [$(CXXFLAGS)] \e[0m\n"
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 

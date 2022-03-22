@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "FortyTwo.hpp"
 
 # define _ARGS "Args : var " << _var
 # define _AUTO(COLOR_CODE, TEXT) "\e[" << COLOR_CODE << ";1m" \
@@ -6,21 +6,21 @@
 	<< "\e[0m" << _ARGS
 
 // ----------------------------- Constructors ------------------------------ //
-Template::Template( void )
+FortyTwo::FortyTwo( void )
 {
 	_var = 0;
 	std::cout << _AUTO(32, "Default Constructor")
 		<< std::endl;
 }
 
-Template::Template( const Template &copy )
+FortyTwo::FortyTwo( const FortyTwo &copy )
 {
 	_var = copy.getVar();
 	std::cout << _AUTO(32, "Copy Constructor")
 		<< std::endl;
 }
 
-Template::Template( int var )
+FortyTwo::FortyTwo( int var )
 {
 	_var = var;
 	std::cout << _AUTO(32, "Fields Constructor")
@@ -28,28 +28,28 @@ Template::Template( int var )
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Template::~Template( void )
+FortyTwo::~FortyTwo( void )
 {
 	std::cout << _AUTO(31, "Destructor called")
 		<< std::endl;
 }
 // ------------------------------- Operators ------------------------------- //
 
-Template & Template::operator=(const Template &assign)
+FortyTwo & FortyTwo::operator=(const FortyTwo &assign)
 {
 	_var = assign.getVar();
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int	Template::getVar( void ) const
+int	FortyTwo::getVar( void ) const
 {
 	std::cout << _AUTO(33, "Getter")
 		<< std::endl;
 	return _var;
 }
 
-void	Template::setVar( int input )
+void	FortyTwo::setVar( int input )
 {
 	std::cout << _AUTO(34, "Setter")
 		<< " Old " << _var << " New " << input
@@ -58,7 +58,7 @@ void	Template::setVar( int input )
 }
 
 // --------------------------------- Methods ------------------------------- //
-int	Template::isEqual( Template t)
+int	FortyTwo::isEqual( FortyTwo t)
 {
 	if (this->getVar() == t.getVar())
 	{

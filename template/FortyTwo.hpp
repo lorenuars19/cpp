@@ -1,21 +1,21 @@
-#ifndef TEMPLATE_HPP
-# define TEMPLATE_HPP
+#ifndef FORTYTWO_HPP
+# define FORTYTWO_HPP
 
 # include <iostream>
 
-class Template
+class FortyTwo
 {
 	public:
 // ----------------------------- Constructors ------------------------------ //
-		Template( void );					// Default Constructor
-		Template( int input );				// Fields Constructor
-		Template( const Template &copy);	// Copy Constructor
+		FortyTwo( void );					// Default Constructor
+		FortyTwo( int input );				// Fields Constructor
+		FortyTwo( const FortyTwo &copy);	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~Template( void );					// Destructor
+		~FortyTwo( void );					// Destructor
 
 // ------------------------------- Operators ------------------------------- //
-		Template & operator=(const Template &assign);
+		FortyTwo & operator=(const FortyTwo &assign);
 		// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
@@ -23,7 +23,10 @@ class Template
 		void	setVar( int input );
 
 // --------------------------------- Methods ------------------------------- //
-		int		isEqual( Template t );
+		int		isEqual( FortyTwo t );
+
+		// virtual void *inheritedMethod( void );
+		// Virtual means using the inherited method : Polymorphism
 
 private:
 	int	_var;

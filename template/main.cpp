@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "FortyTwo.hpp"
 
 int	main()
 {
-	Template t(42);
+	FortyTwo t(42);
 	return 0;
 }

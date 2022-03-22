@@ -1,9 +1,12 @@
+# Name of the executable
 NAME = exec.out
 
-CXX ?= g++
+# CPP Make Variables
+CXX := g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include/
 
+# Directories
 BIN_DIR = ./bin
 SRC_DIR = .
 SRC_EXT = cpp
@@ -11,7 +14,7 @@ SRCS = \
 	FortyTwo.cpp \
 	main.cpp \
 
-OBJS ?= $(SRCS:%.cpp=$(BIN_DIR)/%.o)
+OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
 all : $(NAME)
 

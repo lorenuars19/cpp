@@ -1,8 +1,6 @@
 #include "template.hpp"
 
 // ---------------------- Constructors && Destructor ----------------------- //
-
-
 # define _ARGS << "Args : var " << var
 # define _O_OPEN(COLOR_CODE) "\033[" << COLOR_CODE << "m" << "< "
 # define _O_CLOSE "\033[0m" << " " << __PRETTY_FUNCTION__  << " > " _ARGS

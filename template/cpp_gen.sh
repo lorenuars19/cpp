@@ -72,15 +72,7 @@ EOF
 
 if [[ $# -eq 0 ]]
 then
-	cat << EOF
-Usage :
-	$0 --	Run without argument
-			for interactive version
-
-	$0 [Name of Class]
-EOF
-
-	exit 0
+	read -p 
 else
 	name=$1
 fi

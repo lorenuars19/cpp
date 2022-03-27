@@ -62,6 +62,9 @@ debug: re all
 debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
 debug_san: re all
 
+gen_class:
+	bash cpp_gen.sh
+
 run:
 	@printf "\e[34;1m<> Running -- ./$(NAME)\e[0m\n"
 	@read -n 1 -p "Press any key to continue ..."

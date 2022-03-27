@@ -20,9 +20,8 @@ FortyTwo::FortyTwo( const FortyTwo &copy )
 		<< std::endl;
 }
 
-FortyTwo::FortyTwo( int var )
+FortyTwo::FortyTwo( int var ) : _var(var)
 {
-	_var = var;
 	std::cout << _AUTO(32, "Fields Constructor")
 		<< std::endl;
 }
@@ -35,7 +34,7 @@ FortyTwo::~FortyTwo( void )
 }
 // ------------------------------- Operators ------------------------------- //
 
-FortyTwo & FortyTwo::operator=(const FortyTwo &assign)
+FortyTwo & FortyTwo::operator=( const FortyTwo &assign )
 {
 	_var = assign.getVar();
 	return *this;
@@ -58,7 +57,7 @@ void	FortyTwo::setVar( int input )
 }
 
 // --------------------------------- Methods ------------------------------- //
-int	FortyTwo::isEqual( FortyTwo t)
+int	FortyTwo::isEqual( FortyTwo t )
 {
 	if (this->getVar() == t.getVar())
 	{

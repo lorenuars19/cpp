@@ -1,5 +1,5 @@
 # Name of the executable
-NAME = exec.out
+NAME = megaphone.out
 
 # CPP Make Variables
 CXX := g++
@@ -16,6 +16,7 @@ SRC_EXT = cpp
 # **************************************************************************** #
 
 SRCS = \
+	megaphone.cpp
 
 HEADERS = \
 
@@ -54,3 +55,8 @@ debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
 debug_san: re all
 
 .PHONY: all dir re clean fclean
+
+test:
+	./$(NAME)
+	./$(NAME)  "shhhhh... I think the students are asleep..."
+	./$(NAME)  Damnit " ! " "Sorry students, I thought this thing was off."

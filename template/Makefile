@@ -10,20 +10,29 @@ INCLUDES = -I includes/
 BIN_DIR = ./bin
 SRC_DIR = .
 SRC_EXT = cpp
+
+# Use Bash not SH
+SHELL := bash
+
 ###▼▼▼<src-updater-do-not-edit-or-remove>▼▼▼
 # **************************************************************************** #
 # **   Generated with https://github.com/lorenuars19/makefile-src-updater   ** #
 # **************************************************************************** #
 
 SRCS = \
+	./src/FortyTwo.cpp \
+	./src/main.cpp \
 
 HEADERS = \
+	./includes/FortyTwo.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 
 OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
-all : $(NAME)
+.PHONY: all dir re clean fclean run
+
+all : $(NAME) run
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
@@ -53,4 +62,8 @@ debug: re all
 debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
 debug_san: re all
 
-.PHONY: all dir re clean fclean
+run:
+	@printf "\e[34;1m<> Running -- ./$(NAME)\e[0m\n"
+	@read -n 1 -p "Press any key to continue ..."
+
+	./$(NAME)

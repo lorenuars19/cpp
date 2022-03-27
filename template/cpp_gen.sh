@@ -61,11 +61,11 @@ private:
 
 # ifndef NO_DEBUG
 #  define _ARGS "Args : var " << _var
-#  define _AUTO(COLOR_CODE, TEXT) "\e[" << COLOR_CODE << ";1m" \\
+#  define _AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \\
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \\
-	<< "\e[0m" << _ARGS
-#  else
-	_AUTO(x, y) ""
+	<< "\e[0m" << _ARGS << std::endl
+# else
+#  define _AUTO(x, y) ;
 # endif
 
 #endif
@@ -86,28 +86,24 @@ function gen_class_file()
 ${name}::${name}( void )
 {
 	_var = 0;
-	std::cout << _AUTO(32, "Default Constructor")
-		<< std::endl;
+	_AUTO(32, "Default Constructor");
 }
 
 ${name}::${name}( const ${name}& copy )
 {
 	_var = copy.get_var();
-	std::cout << _AUTO(32, "Copy Constructor")
-		<< std::endl;
+	_AUTO(32, "Copy Constructor");
 }
 
 ${name}::${name}( int var ) : _var(var)
 {
-	std::cout << _AUTO(32, "Fields Constructor")
-		<< std::endl;
+	_AUTO(32, "Fields Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
 ${name}::~${name}( void )
 {
-	std::cout << _AUTO(31, "Destructor called")
-		<< std::endl;
+	_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //
 
@@ -120,23 +116,21 @@ ${name} & ${name}::operator=( const ${name}& assign )
 // --------------------------- Getters && Setters -------------------------- //
 int	${name}::get_var( void ) const
 {
-	std::cout << _AUTO(33, "Getter")
-		<< std::endl;
+	_AUTO(33, "Getter");
 	return _var;
 }
 
 void	${name}::set_var( int input )
 {
-	std::cout << _AUTO(34, "Setter")
-		<< " Old " << _var << " New " << input
-		<< std::endl;
+	_AUTO(34, "Setter");
+	std::cout << " Old " << _var << " New " << input << std::endl;
 	_var = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
 int	${name}::is_equal( const ${name} comp )
 {
-	if (this->get_var() == t.get_var())
+	if (this->get_var() == comp.get_var())
 	{
 		return this->get_var();
 	}

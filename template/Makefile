@@ -35,14 +35,14 @@ OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 all : $(NAME) run
 
 $(NAME) : $(OBJS)
-	@printf "\e[33;1m&&& $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
+	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
-	@printf "\e[32;1m+++ $< -- [$(CXXFLAGS)] \e[0m\n"
+	@printf "\e[32;1m+++ Compiling $< -- [$(CXXFLAGS)] \e[0m\n"
 	@mkdir -p $(@D)
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -69,7 +69,7 @@ gen_class:
 	bash cpp_gen.sh
 
 run:
-	@printf "\e[34;1m<> Running -- ./$(NAME)\e[0m\n"
+	@printf "\e[34;1m>./ Running -- ./$(NAME)\e[0m\n"
 	@read -n 1 -p "Press any key to continue ..."
 
 	./$(NAME)

@@ -9,18 +9,18 @@ class FortyTwo
 // ----------------------------- Constructors ------------------------------ //
 		FortyTwo( void );	// Default Constructor
 		FortyTwo( int var );	// Fields Constructor
-		FortyTwo( const FortyTwo &copy );	// Copy Constructor
+		FortyTwo( const FortyTwo& copy );	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
 		~FortyTwo( void );	// Destructor
 
 // ------------------------------- Operators ------------------------------- //
-		FortyTwo & operator=( const FortyTwo &assign );
+		FortyTwo & operator=( const FortyTwo& assign );
 		// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
-		int		getVar( void ) const;
-		void	setVar( int input );
+		int		get_var( void ) const;
+		void	set_var( int input );
 
 // --------------------------------- Methods ------------------------------- //
 		int		isEqual( FortyTwo t );

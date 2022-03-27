@@ -56,6 +56,9 @@ fclean: clean
 
 re: fclean all
 
+no_debug: CXXFLAGS += -D NO_DEBUG
+no_debug: re all
+
 debug: CXXFLAGS += -D DEBUG=1 -g3
 debug: re all
 

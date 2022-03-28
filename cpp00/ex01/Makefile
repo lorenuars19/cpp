@@ -16,8 +16,13 @@ SRC_EXT = cpp
 # **************************************************************************** #
 
 SRCS = \
+	./src/Contact.cpp \
+	./src/main.cpp \
+	./src/PhoneBook.cpp \
 
 HEADERS = \
+	./includes/Contact.hpp\
+	./includes/PhoneBook.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

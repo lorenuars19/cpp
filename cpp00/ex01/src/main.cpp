@@ -14,31 +14,37 @@ int	main()
 	std::cout << "******************************************************************************" << std::endl;
 	std::cout << "*                       Welcome to my Awesome PhoneBook                      *" << std::endl;
 	std::cout << "******************************************************************************" << std::endl;
-	while (ans.compare("EXIT") != 0 && ans.compare("E") != 0 &&
-		ans.compare("exit") != 0 && ans.compare("e") != 0 &&
-		ans.compare("Exit") != 0)
+	while (1)
 	{
+		std::cout << std::endl << "\033[2KEnter a command [ 'ADD' | 'SEARCH' | 'EXIT' ] : ";
+		std::getline(std::cin, ans);
 
-		std::cout << "Enter a command (Add | Search | Exit) : ";
-		std::cin >> ans;
-		if (std::cin.eof())
-			break;
-		if (ans.compare("ADD") == 0 || ans.compare("A") == 0 ||
-			ans.compare("a") == 0 || ans.compare("add") == 0 ||
-			ans.compare("Add") == 0)
+		if (ans == "ADD" || ans == "A" || ans == "a")
 		{
 			ph.add_contact();
 		}
-		else if (ans.compare("SEARCH") == 0 || ans.compare("S") == 0 ||
-				ans.compare("search") == 0 || ans.compare("s") == 0 ||
-				ans.compare("Search") == 0)
+		else if (ans == "SEARCH" || ans == "S" || ans == "s")
 		{
 			if (ph.search_contact())
 			{
 				std::cerr << "Error : Invalid index" << std::endl;
 			}
 		}
+		else if (ans == "EXIT" || ans == "E" || ans == "e")
+		{
+			std::cout << std::endl << "Exit" << std::endl;
+			return 0;
+		}
+		else if (ans != "")
+		{
+			std::cout << "\033[2K"; // clear line
+			std::cout << "Unrecognized command : please enter a valid command."<< std::endl;
+			std::cout << "\033[3A";
+		}
+		else
+		{
+			std::cout << "\033[2A";
+		}
 	}
-	std::cout << std::endl << "Exit" << std::endl;
 	return 0;
 }

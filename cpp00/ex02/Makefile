@@ -73,13 +73,3 @@ run:
 	@read -n 1 -p "Press any key to continue ..."
 
 	./$(NAME)
-
-
-testdiff:
-	./$(NAME) > out.log
-
-	sed 's/\[.*\] //g' out.log > my.log
-	sed 's/\[.*\] //g' 19920104_091532.log > their.log
-
-	diff my.log their.log > difflog.log
-	rm my.log out.log their.log

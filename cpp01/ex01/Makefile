@@ -4,7 +4,7 @@ NAME = exec.out
 # CPP Make Variables
 CXX := g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-INCLUDES = -I includes/
+INCLUDES = -I includes/ -I /usr/include/
 
 # Directories
 BIN_DIR = ./bin
@@ -19,9 +19,13 @@ SHELL := bash
 # **   Generated with https://github.com/lorenuars19/makefile-src-updater   ** #
 # **************************************************************************** #
 
-SRCS := \
+SRCS = \
+	././main.cpp \
+	././Zombie.cpp \
+	././ZombieHorde.cpp \
 
-HEADERS := \
+HEADERS = \
+	././Zombie.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 
@@ -30,7 +34,6 @@ OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 .PHONY: all dir re clean fclean run
 
 all : $(NAME) run
-
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
@@ -54,23 +57,15 @@ fclean: clean
 
 re: fclean all
 
-soft: CXXFLAGS =
-soft: re all
+no_debug: CXXFLAGS += -D NO_DEBUG
+no_debug: re all
 
-no_dbg: CXXFLAGS += -D NO_DEBUG
-no_dbg: re all
+debug: CXXFLAGS += -D DEBUG=1 -g3
+debug: re all
 
-dbg: CXXFLAGS += -D DEBUG=1 -g3
-dbg: re all
-
-dbg_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
-dbg_san: re all
-
-dbg_lek: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address -fsanitize=leak
-dbg_lek: LSAN_OPTIONS=report_objects=1
-dbg_lek: ASAN_OPTIONS=detect_leaks=1
-dbg_lek: CXX = g++_
-dbg_lek: re all
+debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address -fsanitize=leak
+debug_san: CXX=g++_
+debug_san: re all
 
 gen_class:
 	bash cpp_gen.sh

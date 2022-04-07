@@ -4,7 +4,7 @@ NAME = exec.out
 # CPP Make Variables
 CXX := g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-INCLUDES = -I includes/
+INCLUDES = -I includes/ -I /usr/include/
 
 # Directories
 BIN_DIR = ./bin
@@ -38,7 +38,7 @@ all : $(NAME) run
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
@@ -46,7 +46,7 @@ $(BIN_DIR):
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
 	@printf "\e[32;1m+++ Compiling $< -- [$(CXXFLAGS)] \e[0m\n"
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@printf "\e[31;1m--- $(OBJS)\e[0m\n"
@@ -64,7 +64,8 @@ no_debug: re all
 debug: CXXFLAGS += -D DEBUG=1 -g3
 debug: re all
 
-debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
+debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address -fsanitize=leak
+debug_san: CXX=g++_
 debug_san: re all
 
 gen_class:

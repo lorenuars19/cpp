@@ -10,11 +10,9 @@ int main(void)
 
 	ptr = newZombie("Alloc");
 	ptr->anounce();
-	// delete ptr;
+	delete ptr;
 
 	randomChump("Wesh");
-
-	system("leaks exec.out");
 
 	return 0;
 }

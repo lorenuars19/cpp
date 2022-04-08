@@ -3,7 +3,7 @@
 // ----------------------------- Constructors ------------------------------ //
 Weapon::Weapon(void)
 {
-	_type = 0;
+	_type = "";
 	_AUTO(32, "Default Constructor") << std::endl;
 }
 
@@ -13,7 +13,7 @@ Weapon::Weapon(const Weapon &copy)
 	_AUTO(32, "Copy Constructor") << std::endl;
 }
 
-Weapon::Weapon(int type) : _type(type)
+Weapon::Weapon(std::string type) : _type(type)
 {
 	_AUTO(32, "Fields Constructor") << std::endl;
 }
@@ -32,7 +32,7 @@ Weapon &Weapon::operator=(const Weapon &assign)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int Weapon::getType(void) const
+std::string Weapon::getType(void) const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _type;
@@ -45,11 +45,4 @@ void Weapon::setType(int input)
 }
 
 // --------------------------------- Methods ------------------------------- //
-int Weapon::is_equal(const Weapon comp)
-{
-	if (this->getType() == comp.getType())
-	{
-		return this->getType();
-	}
-	return 0;
-}
+

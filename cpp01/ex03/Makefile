@@ -20,13 +20,11 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	././HumanA.cpp \
-	././HumanB.cpp \
+	././src/HumanA.cpp \
 	././Weapon.cpp \
 
 HEADERS := \
-	././HumanA.hpp\
-	././HumanB.hpp\
+	././includes/HumanA.hpp\
 	././Weapon.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲

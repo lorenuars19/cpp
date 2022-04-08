@@ -7,9 +7,9 @@ class HumanA
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	HumanA(void);				// Default Constructor
-	HumanA(int type);			// Fields Constructor
-	HumanA(const HumanA &copy); // Copy Constructor
+	HumanA(void);						// Default Constructor
+	HumanA(std::string name, Weapon w); // Fields Constructor
+	HumanA(const HumanA &copy);			// Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
 	~HumanA(void); // Destructor
@@ -19,18 +19,18 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_type(void) const;
-	void set_type(int input);
+	int get_var(void) const;
+	void set_var(int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	int is_equal(const HumanA comp);
+	void attack(void);
 
 private:
-	int _type;
+	int _var;
 };
 
 #ifndef NO_DEBUG
-#define _ARGS "Args : type " << _type
+#define _ARGS "Args : var " << _var
 #define _AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m"                        \
 										  << "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
 										  << "\e[0m" << _ARGS

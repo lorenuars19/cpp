@@ -3,17 +3,17 @@
 // ----------------------------- Constructors ------------------------------ //
 HumanA::HumanA(void)
 {
-	_type = 0;
+	_name = 0;
 	_AUTO(32, "Default Constructor") << std::endl;
 }
 
 HumanA::HumanA(const HumanA &copy)
 {
-	_type = copy.get_type();
+	_name = copy.get_name();
 	_AUTO(32, "Copy Constructor") << std::endl;
 }
 
-HumanA::HumanA(int type) : _type(type)
+HumanA::HumanA(std::string name, Weapon w) : _name(name)
 {
 	_AUTO(32, "Fields Constructor") << std::endl;
 }
@@ -27,29 +27,29 @@ HumanA::~HumanA(void)
 
 HumanA &HumanA::operator=(const HumanA &assign)
 {
-	_type = assign.get_type();
+	_name = assign.get_name();
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int HumanA::get_type(void) const
+int HumanA::get_name(void) const
 {
 	_AUTO(33, "Getter") << std::endl;
-	return _type;
+	return _name;
 }
 
-void HumanA::set_type(int input)
+void HumanA::set_name(int input)
 {
-	_AUTO(34, "Setter") << " Old " << _type << " New " << input << std::endl;
-	_type = input;
+	_AUTO(34, "Setter") << " Old " << _name << " New " << input << std::endl;
+	_name = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
 int HumanA::is_equal(const HumanA comp)
 {
-	if (this->get_type() == comp.get_type())
+	if (this->get_name() == comp.get_name())
 	{
-		return this->get_type();
+		return this->get_name();
 	}
 	return 0;
 }

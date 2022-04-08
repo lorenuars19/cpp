@@ -9,7 +9,7 @@ class Weapon
 public:
 	// ----------------------------- Constructors ------------------------------ //
 	Weapon(void);				// Default Constructor
-	Weapon(int type);			// Fields Constructor
+	Weapon(std::string type);	// Fields Constructor
 	Weapon(const Weapon &copy); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
@@ -20,11 +20,11 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int getType(void) const;
+	std::string getType(void) const;
 	void setType(int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	int is_equal(const Weapon comp);
+
 
 private:
 	std::string _type;

@@ -34,15 +34,14 @@ Weapon &Weapon::operator=(const Weapon &assign)
 // --------------------------- Getters && Setters -------------------------- //
 std::string Weapon::getType(void) const
 {
-	_AUTO(33, "Getter") << std::endl;
+	// _AUTO(33, "Getter");
 	return _type;
 }
 
-void Weapon::setType(int input)
+void Weapon::setType(std::string input)
 {
 	_AUTO(34, "Setter") << " Old " << _type << " New " << input << std::endl;
 	_type = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
-

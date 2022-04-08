@@ -21,22 +21,23 @@ public:
 
 	// --------------------------- Getters && Setters -------------------------- //
 	std::string getType(void) const;
-	void setType(int input);
+	void setType(std::string input);
 
 	// --------------------------------- Methods ------------------------------- //
-
 
 private:
 	std::string _type;
 };
 
 #ifndef NO_DEBUG
-#define _ARGS "Args : type " << _type
-#define _AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m"                        \
+#undef _ARGS
+#define _ARGS "Args : _type " << _type << " "
+#undef _AUTO
+#define _AUTO(COLOR_CODE, TEXT) std::cout << " \e[" << COLOR_CODE << ";1m"                        \
 										  << "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
 										  << "\e[0m" << _ARGS
 #else
-#define _AUTO(x, y) ;
+#define _AUTO(x, y) std::cout
 #endif
 
 #endif

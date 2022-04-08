@@ -1,64 +1,63 @@
-#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-HumanA::HumanA(void) : _name("")
+HumanB::HumanB(void)
 {
-	_weapon = Weapon();
+	_name = "";
 	_AUTO(32, "Default Constructor") << std::endl;
 }
 
-HumanA::HumanA(const HumanA &copy) : _name(copy.get_name())
+HumanB::HumanB(const HumanB &copy)
 {
-	_weapon = copy.get_weapon();
+	_name = copy.get_name();
 	_AUTO(32, "Copy Constructor") << std::endl;
 }
 
-HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
+HumanB::HumanB(std::string name) : _name(name)
 {
 	_AUTO(32, "Fields Constructor") << std::endl;
 }
 
 // ------------------------------ Destructor ------------------------------- //
-HumanA::~HumanA(void)
+HumanB::~HumanB(void)
 {
 	_AUTO(31, "Destructor called") << std::endl;
 }
 // ------------------------------- Operators ------------------------------- //
 
-HumanA &HumanA::operator=(const HumanA &assign)
+HumanB &HumanB::operator=(const HumanB &assign)
 {
 	_name = assign.get_name();
-	_weapon = assign.get_weapon();
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string HumanA::get_name(void) const
+std::string HumanB::get_name(void) const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _name;
 }
 
-void HumanA::set_name(int input)
+void HumanB::set_name(int input)
 {
 	_AUTO(34, "Setter") << " Old " << _name << " New " << input << std::endl;
 	_name = input;
 }
 
-Weapon HumanA::get_weapon(void) const
+Weapon HumanB::get_weapon(void) const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _weapon;
 }
 
-void HumanA::set_weapon(Weapon &input)
+void HumanB::set_weapon(Weapon &input)
 {
 	_AUTO(34, "Setter") << " Old " << _weapon.getType() << " New " << input.getType() << std::endl;
 	_weapon = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
-void HumanA::attack(void)
+void HumanB::attack(void)
 {
 	std::cout << _name << " attacks with "
 			  << _weapon.getType()

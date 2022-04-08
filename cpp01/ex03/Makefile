@@ -20,11 +20,12 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	././src/HumanA.cpp \
+	././HumanA.cpp \
+	././main.cpp \
 	././Weapon.cpp \
 
 HEADERS := \
-	././includes/HumanA.hpp\
+	././HumanA.hpp\
 	././Weapon.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
@@ -38,15 +39,15 @@ all : $(NAME) run
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
-	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 
-$(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) $(HEADERS) | $(BIN_DIR)
 	@printf "\e[32;1m+++ Compiling $< -- [$(CXXFLAGS)] \e[0m\n"
 	@mkdir -p $(@D)
-	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@printf "\e[31;1m--- $(OBJS)\e[0m\n"

@@ -1,23 +1,23 @@
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
 #include <iostream>
 
 #include "Weapon.hpp"
 
-class HumanA
+class HumanB
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	HumanA(void);							  // Default Constructor
-	HumanA(std::string name, Weapon &weapon); // Fields Constructor
-	HumanA(const HumanA &copy);				  // Copy Constructor
+	HumanB(void);				// Default Constructor
+	HumanB(std::string name);	// Fields Constructor
+	HumanB(const HumanB &copy); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~HumanA(void); // Destructor
+	~HumanB(void); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
-	HumanA &operator=(const HumanA &assign);
+	HumanB &operator=(const HumanB &assign);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //

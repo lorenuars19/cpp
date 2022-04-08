@@ -4,7 +4,6 @@
 int main(void)
 {
 	std::string string = "HI THIS IS BRAIN";
-
 	std::string *stringPTR = &string;
 	std::string &stringREF = string;
 
@@ -13,9 +12,9 @@ int main(void)
 			  << "Address of Reference to string  : " << &stringREF << std::endl
 			  << std::endl;
 
-	std::cout << "Value of string               : " << string << std::endl
-			  << "Value of Pointer to string    : " << *stringPTR << std::endl
-			  << "Value of Reference to string  : " << stringREF << std::endl
+	std::cout << "Value of string                 : " << string << std::endl
+			  << "Value of Pointer to string      : " << *stringPTR << std::endl
+			  << "Value of Reference to string    : " << stringREF << std::endl
 			  << std::endl;
 
 	return 0;

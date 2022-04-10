@@ -66,6 +66,7 @@ private:
 	<< "\e[0m" << _${up_name}_ARGS
 # else
 #  define _${up_name}_AUTO(x, y) ;
+#  define _${up_name}_ARGS ""
 # endif
 
 #endif

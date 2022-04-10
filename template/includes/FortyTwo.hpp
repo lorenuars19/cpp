@@ -37,6 +37,7 @@ private:
 	<< "\e[0m" << _FORTYTWO_ARGS
 # else
 #  define _FORTYTWO_AUTO(x, y) ;
+#  define _FORTYTWO_ARGS ""
 # endif
 
 #endif

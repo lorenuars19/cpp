@@ -31,12 +31,12 @@ private:
 };
 
 # ifndef NO_DEBUG
-#  define _ARGS "Args : var " << _var
-#  define _AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \
+#  define _FORTYTWO_ARGS "[ARGS] : var(" << _var << ") "
+#  define _FORTYTWO_AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
-	<< "\e[0m" << _ARGS
+	<< "\e[0m" << _FORTYTWO_ARGS
 # else
-#  define _AUTO(x, y) ;
+#  define _FORTYTWO_AUTO(x, y) ;
 # endif
 
 #endif

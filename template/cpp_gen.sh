@@ -26,7 +26,7 @@ function gen_class_header
 	printf "\e[32;1m+++ Generating ${name} Header -- $header_filename\e[0m\n"
 	mkdir -p $INC_DIR
 	up_name=$(echo "${name}" | tr '[:lower:]' '[:upper:]')
-	cat > $header_filename << EOF
+	cat >> $header_filename << EOF
 #ifndef ${up_name}_HPP
 # define ${up_name}_HPP
 
@@ -60,7 +60,7 @@ private:
 };
 
 # ifndef NO_DEBUG
-#  define _${up_name}_ARGS "Args : var " << _var
+#  define _${up_name}_ARGS "[ARGS] : var(" << _var << ") "
 #  define _${up_name}_AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \\
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \\
 	<< "\e[0m" << _${up_name}_ARGS
@@ -79,7 +79,7 @@ function gen_class_file
 	printf "\e[32;1m+++ Generating $name Class -- $class_filename\e[0m\n"
 	mkdir -p $SRC_DIR
 
-	cat > $class_filename << EOF
+	cat >> $class_filename << EOF
 #include "${name}.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
@@ -122,19 +122,11 @@ int	${name}::get_var( void ) const
 
 void	${name}::set_var( int input )
 {
-	_${up_name}_AUTO(34, "Setter") << " Old " << _var << " New " << input << std::endl;
+	_${up_name}_AUTO(34, "Setter") << "| old(" << _var << ") new(" << input << ") "<< std::endl;
 	_var = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
-int	${name}::is_equal( const ${name} comp )
-{
-	if (this->get_var() == comp.get_var())
-	{
-		return this->get_var();
-	}
-	return 0;
-}
 
 EOF
 }
@@ -145,6 +137,10 @@ then
 else
 	ARG=$1
 fi
-
+if [[ -z $ARG ]]
+then
+	echo "Please provide a non-empty name."
+	exit 1
+fi
 gen_class_header $ARG
 gen_class_file $ARG

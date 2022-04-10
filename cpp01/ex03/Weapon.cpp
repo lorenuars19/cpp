@@ -1,5 +1,6 @@
 #include "Weapon.hpp"
 
+
 // ----------------------------- Constructors ------------------------------ //
 Weapon::Weapon(void)
 {

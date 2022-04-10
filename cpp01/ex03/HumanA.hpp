@@ -24,7 +24,7 @@ public:
 	std::string get_name(void) const;
 	void set_name(int input);
 
-	Weapon get_weapon(void) const;
+	Weapon &get_weapon(void) const;
 	void set_weapon(Weapon &input);
 	// --------------------------------- Methods ------------------------------- //
 	void attack(void);

@@ -9,16 +9,16 @@ int main(void)
 
 	HumanA bob = HumanA("Bob", club);
 
-	// HumanB ali = HumanB("ali");
+	HumanB ali = HumanB("ali");
 
-	// ali.set_weapon(club);
-
-	bob.attack();
-
-	// ali.attack();
-
-	club.setType("NONE");
+	ali.attack();
+	ali.set_weapon(club);
 
 	bob.attack();
-	// ali.attack();
+	ali.attack();
+
+	club.setType("clubby");
+
+	bob.attack();
+	ali.attack();
 }

@@ -1,19 +1,23 @@
 #include "HumanA.hpp"
 
+Weapon _defaultWeapon = Weapon();
+
 // ----------------------------- Constructors ------------------------------ //
-HumanA::HumanA(void) : _name("")
+HumanA::HumanA(void) : _name(""), _weapon(_defaultWeapon)
 {
-	_weapon = Weapon();
+	// _weapon = ;
 	_AUTO(32, "Default Constructor") << std::endl;
 }
 
-HumanA::HumanA(const HumanA &copy) : _name(copy.get_name())
+HumanA::HumanA(const HumanA &copy) : _name(copy.get_name()),
+									 _weapon(copy.get_weapon())
 {
-	_weapon = copy.get_weapon();
+	// _weapon = copy.get_weapon();
 	_AUTO(32, "Copy Constructor") << std::endl;
 }
 
-HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name),
+												   _weapon(weapon)
 {
 	_AUTO(32, "Fields Constructor") << std::endl;
 }
@@ -45,7 +49,7 @@ void HumanA::set_name(int input)
 	_name = input;
 }
 
-Weapon HumanA::get_weapon(void) const
+Weapon &HumanA::get_weapon(void) const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _weapon;

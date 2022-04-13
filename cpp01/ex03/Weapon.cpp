@@ -1,6 +1,5 @@
 #include "Weapon.hpp"
 
-
 // ----------------------------- Constructors ------------------------------ //
 Weapon::Weapon(void)
 {
@@ -41,7 +40,9 @@ std::string Weapon::getType(void) const
 
 void Weapon::setType(std::string input)
 {
-	_AUTO(34, "Setter") << " Old " << _type << " New " << input << std::endl;
+	_AUTO(34, "Setter") << "| old(" << _type
+						<< ") new(" << input << ") "
+						<< std::endl;
 	_type = input;
 }
 

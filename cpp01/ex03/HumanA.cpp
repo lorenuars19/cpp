@@ -57,7 +57,9 @@ Weapon &HumanA::get_weapon(void) const
 
 void HumanA::set_weapon(Weapon &input)
 {
-	_AUTO(34, "Setter") << " Old " << _weapon.getType() << " New " << input.getType() << std::endl;
+	_AUTO(34, "Setter") << "| old(" << _weapon.getType()
+						<< ") new(" << input.getType() << ") "
+						<< std::endl;
 	_weapon = input;
 }
 

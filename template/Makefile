@@ -67,8 +67,8 @@ dbg_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
 dbg_san: re all
 
 dbg_lek: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address -fsanitize=leak
-dbg_lek: LSAN_OPTIONS=report_objects=1
-dbg_lek: ASAN_OPTIONS=detect_leaks=1
+dbg_lek: export LSAN_OPTIONS=report_objects=1
+dbg_lek: export ASAN_OPTIONS=detect_leaks=1
 dbg_lek: CXX = g++_
 dbg_lek: re all
 
@@ -80,4 +80,4 @@ run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME) [$(RUN_ARGS)]\e[0m\n"
 	@read -n 1 -p "Press any key to continue ..."
 
-	./$(NAME)
+	./$(NAME) $(RUN_ARGS)

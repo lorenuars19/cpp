@@ -56,8 +56,9 @@ void HumanB::set_weapon(Weapon &input)
 	_AUTO(34, "Setter");
 	if (_weapon)
 	{
-		std::cout << " Old " << _weapon->getType()
-				  << " New " << input.getType();
+		std::cout << "| old(" << _weapon->getType()
+				  << ") new(" << input.getType() << ") "
+				  << std::endl;
 	}
 	std::cout << std::endl;
 	_weapon = &input;

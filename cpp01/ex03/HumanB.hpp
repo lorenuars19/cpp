@@ -35,8 +35,13 @@ private:
 };
 
 #ifndef NO_DEBUG
+
+#ifndef _ARG
+#define _ARG(arg) #arg << "(" << arg << ") "
+#endif
+
 #undef _ARGS
-#define _ARGS "Args : name " << _name << " weapon " << &_weapon << " "
+#define _ARGS "Args : " << _ARG(_name) << _ARG(_weapon)
 #undef _AUTO
 #define _AUTO(COLOR_CODE, TEXT) std::cout << " \e[" << COLOR_CODE << ";1m"                       \
 										  << "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \

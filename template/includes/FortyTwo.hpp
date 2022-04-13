@@ -31,13 +31,17 @@ private:
 };
 
 # ifndef NO_DEBUG
-#  define _FORTYTWO_ARGS "[ARGS] : var(" << _var << ") "
+#  ifndef _ARG
+#   define _ARG(arg) #arg << "(" << arg << ") "
+#  endif /* _ARG */
+#  define _FORTYTWO_ARGS "[ARGS] " << _ARG(_var)
 #  define _FORTYTWO_AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
 	<< "\e[0m" << _FORTYTWO_ARGS
 # else
-#  define _FORTYTWO_AUTO(x, y) ;
+#  define _FORTYTWO_AUTO(x, y) ""
 #  define _FORTYTWO_ARGS ""
-# endif
+#  define _ARG ""
+# endif /* NO_DEBUG */
 
-#endif
+#endif /* FORTYTWO_HPP */

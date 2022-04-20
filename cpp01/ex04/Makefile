@@ -1,5 +1,5 @@
 # Name of the executable
-NAME = exec.out
+NAME = mini_sed
 
 # CPP Make Variables
 CXX := g++
@@ -20,11 +20,9 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/FortyTwo.cpp \
 	./src/main.cpp \
 
 HEADERS := \
-	./includes/FortyTwo.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 
@@ -83,6 +81,12 @@ run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME) [$(RUN_ARGS)]\e[0m\n"
 	@read -n 1 -p "Press any key to continue ..."
 
-	./$(NAME) $(RUN_ARGS)
+	-./$(NAME) $(RUN_ARGS)
+	-./$(NAME) tet.txt "." "."
 
-
+	@read -n 1 -p "Press any key to continue ..."
+	-./$(NAME) text.txt "rep" "-"
+	@read -n 1 -p "Press any key to continue ..."
+	-./$(NAME) text.txt "." "-"
+	@read -n 1 -p "Press any key to continue ..."
+	-./$(NAME) text.txt $$'me\nif' $$'you\tdo'

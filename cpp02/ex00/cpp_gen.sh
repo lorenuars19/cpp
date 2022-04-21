@@ -7,23 +7,28 @@ INC_DIR=./includes
 CLASS_EXT=".cpp"
 HEADER_EXT=".hpp"
 
-function check_overwrite {
-	if [[ -f $1 ]]; then
+function check_overwrite
+{
+	if [[ -f $1 ]]
+	then
 		printf "\033[31;1mFile $1 already exists\nOverwrite ? [y/N]\033[0m\n"
 		read ans
-		if [ "$ans" == "n" ] || [ "$ans" == "N" ] || [ -z "$ans" ]; then
+		if [ "$ans" == "n" ] || [ "$ans" == "N" ] || [ -z "$ans" ]
+		then
 			return 1
 		fi
 	fi
 	return 0
 }
 
-function gen_class_header {
+function gen_class_header
+{
 	CLASS_NAME=$1
 	HEADER_FILENAME="${INC_DIR}/${CLASS_NAME}${HEADER_EXT}"
 
 	check_overwrite $HEADER_FILENAME
-	if [[ $? -eq 1 ]]; then
+	if [[ $? -eq 1 ]]
+	then
 		return 1
 	fi
 
@@ -31,7 +36,9 @@ function gen_class_header {
 	mkdir -p $INC_DIR
 	UP_CLASS_NAME=$(echo "${CLASS_NAME}" | tr '[:lower:]' '[:upper:]')
 
-	cat >$HEADER_FILENAME <<EOF
+
+
+	cat > $HEADER_FILENAME << EOF
 #ifndef ${UP_CLASS_NAME}_HPP
 # define ${UP_CLASS_NAME}_HPP
 
@@ -71,12 +78,10 @@ private:
 #   define _ARG(arg) #arg << "(" << arg << ") "
 #  endif /* _ARG */
 
-#  define _${UP_CLASS_NAME}_ARGS  _ARG(_var)
+#  define _${UP_CLASS_NAME}_ARGS "[ARGS] " << _ARG(_var)
 #  define _${UP_CLASS_NAME}_AUTO(COLOR_CODE, TEXT) std::cout << "\e[" << COLOR_CODE << ";1m" \\
 	<< "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \\
-	<< "\e[0m" << "[\033[34;47m" << this \\
-	<< "\033[0m] [\033[33;40mARGS\033[0m] " << _${UP_CLASS_NAME}_ARGS \\
-	<< std::endl;
+	<< "\e[0m" << _${UP_CLASS_NAME}_ARGS << std::endl;
 # else
 
 #  define _${UP_CLASS_NAME}_AUTO(x, y) ;
@@ -89,19 +94,22 @@ private:
 EOF
 }
 
-function gen_class_file {
+function gen_class_file
+{
 	CLASS_NAME=$1
 	class_filename=${SRC_DIR}/${CLASS_NAME}${CLASS_EXT}
 
 	check_overwrite $class_filename
-	if [[ $? -eq 1 ]]; then
+	if [[ $? -eq 1 ]]
+	then
 		return 1
 	fi
 
 	printf "\e[32;1m+++ Generating $CLASS_NAME Class -- $class_filename\e[0m\n"
 	mkdir -p $SRC_DIR
 
-	cat >$class_filename <<EOF
+
+	cat > $class_filename << EOF
 #include "${CLASS_NAME}.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
@@ -160,7 +168,8 @@ EOF
 printf "\e[33;1m--- Class files Boiler Plate Generator ---\e[0m\n\n"
 ARG=$1
 
-while [[ -z "$ARG" ]]; do
+while [[ -z "$ARG" ]]
+do
 	read -p "Enter class name : " ARG
 done
 

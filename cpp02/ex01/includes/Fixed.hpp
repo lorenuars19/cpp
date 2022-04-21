@@ -2,17 +2,15 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <cmath>
 
 class Fixed
 {
 public:
 	typedef Fixed t;
 	// ----------------------------- Constructors ------------------------------ //
-	Fixed(void);			  // Default Constructor
-	Fixed(int const value);	  // Fields Constructor integer
-	Fixed(float const value); // Fields Constructor floating point
-	Fixed(const t &c);		  // Copy Constructor
+	Fixed(void); // Default Constructor
+	// Fixed(int value);  // Fields Constructor
+	Fixed(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
 	~Fixed(void); // Destructor
@@ -20,8 +18,6 @@ public:
 	// ------------------------------- Operators ------------------------------- //
 	Fixed &operator=(const t &a);
 	// Copy Assignement Operator
-	std::ostream &operator<<(std::ostream &o, const t &input);
-	// << operator Overload
 
 	// --------------------------- Getters && Setters -------------------------- //
 	int get_value(void) const;
@@ -30,8 +26,6 @@ public:
 	// --------------------------------- Methods ------------------------------- //
 	int getRawBits(void) const;
 	void seRawBits(int const raw);
-	float toFloat(void) const;
-	int toInt(void) const;
 
 private:
 	int _value;

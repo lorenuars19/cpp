@@ -13,10 +13,15 @@ Fixed::Fixed(const t &c)
 	_FIXED_AUTO(32, "Copy Constructor");
 }
 
-// Fixed::Fixed(int value) : _value(value)
-// {
-// 	_FIXED_AUTO(32, "Fields Constructor");
-// }
+Fixed::Fixed(int const value) : _value(value)
+{
+	_FIXED_AUTO(32, "Fields Constructor");
+}
+
+Fixed::Fixed(float const value) : _value(value)
+{
+	_FIXED_AUTO(32, "Fields Constructor");
+}
 
 // ------------------------------ Destructor ------------------------------- //
 Fixed::~Fixed(void)
@@ -29,6 +34,11 @@ Fixed &Fixed::operator=(const t &a)
 {
 	_value = a.get_value();
 	return *this;
+}
+
+std::ostream &operator<<(std::ostream &o, const Fixed &input)
+{
+	return o << input.getRawBits();
 }
 
 // --------------------------- Getters && Setters -------------------------- //
@@ -60,4 +70,14 @@ void Fixed::seRawBits(int const raw)
 {
 	_FIXED_AUTO(35, "setRawBits")
 	_value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	return (-42.42f);
+}
+
+int Fixed::toInt(void) const
+{
+	return (-42);
 }

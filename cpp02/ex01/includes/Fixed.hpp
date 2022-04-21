@@ -8,9 +8,10 @@ class Fixed
 public:
 	typedef Fixed t;
 	// ----------------------------- Constructors ------------------------------ //
-	Fixed(void); // Default Constructor
-	// Fixed(int value);  // Fields Constructor
-	Fixed(const t &c); // Copy Constructor
+	Fixed(void);			  // Default Constructor
+	Fixed(int const value);	  // Fields Constructor integer
+	Fixed(float const value); // Fields Constructor floating point
+	Fixed(const t &c);		  // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
 	~Fixed(void); // Destructor
@@ -26,11 +27,15 @@ public:
 	// --------------------------------- Methods ------------------------------- //
 	int getRawBits(void) const;
 	void seRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
 
 private:
 	int _value;
 	static const int _frac = 8;
 };
+
+std::ostream &operator<<(std::ostream &o, const Fixed &input);
 
 #ifndef NO_DEBUG
 
@@ -39,13 +44,12 @@ private:
 #endif /* _ARG */
 
 #define _FIXED_ARGS _ARG(_value)
-#define _FIXED_AUTO(COLOR_CODE, TEXT)                                \
-	std::cout << "\e[" << COLOR_CODE << ";1m"                        \
-			  << "< " << TEXT << " " << __PRETTY_FUNCTION__ << " > " \
-			  << "\e[0m"                                             \
-			  << "[\033[34;47m" << this                              \
-			  << "\033[0m] [\033[33;40mARGS\033[0m] " << _FIXED_ARGS \
-			  << std::endl;
+#define _FIXED_AUTO(COLOR_CODE, TEXT)                           \
+	std::cout << "< \e[" << COLOR_CODE << ";1m"                 \
+			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \
+			  << "[\033[34;47m" << this                         \
+			  << "\033[0m]\033[0m: " << _FIXED_ARGS             \
+			  << ">" << std::endl;
 #else
 
 #define _FIXED_AUTO(x, y) ;

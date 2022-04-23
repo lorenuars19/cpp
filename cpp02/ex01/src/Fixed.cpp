@@ -15,12 +15,16 @@ Fixed::Fixed(const t &c)
 
 Fixed::Fixed(int const value) : _value(value)
 {
-	_FIXED_AUTO(32, "Fields Constructor");
+	_FIXED_AUTO(32, "Fields Constructor (int)");
+
+	// 64 bits -> 8 Frac
+
+	_value |= value >> 8;
 }
 
 Fixed::Fixed(float const value) : _value(value)
 {
-	_FIXED_AUTO(32, "Fields Constructor");
+	_FIXED_AUTO(32, "Fields Constructor (float)");
 }
 
 // ------------------------------ Destructor ------------------------------- //
@@ -79,5 +83,10 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	return (-42);
+	return (_value << 8);
+}
+
+std::ostream &bin(std::ostream &o, const int input)
+{
+	return o << "bits : " << std::bitset<64>(input) << std::endl;
 }

@@ -17,14 +17,26 @@ Fixed::Fixed(int const value) : _value(value)
 {
 	_FIXED_AUTO(32, "Fields Constructor (int)");
 
+	_value = 0; // reset _value
 	// 64 bits -> 8 Frac
+	std::cout << "value : " << value << " : " << std::bitset<64>(value) << "\n";
 
-	_value |= value >> 8;
+	_value = value * 64;
+
+	std::cout << "_value : " << (_value / 64) << " : " << std::bitset<64>(_value) << "\n";
+
+	std::cout << "_value : & () " << std::bitset<64>(_value & 0b11111111) << "\n";
 }
 
 Fixed::Fixed(float const value) : _value(value)
 {
 	_FIXED_AUTO(32, "Fields Constructor (float)");
+
+	_value = 0;
+
+	_value = ((int)roundf(value)) * 64;
+
+	std::cout << "_value : " << std::bitset<64>(_value) << "\n";
 }
 
 // ------------------------------ Destructor ------------------------------- //
@@ -42,7 +54,16 @@ Fixed &Fixed::operator=(const t &a)
 
 std::ostream &operator<<(std::ostream &o, const Fixed &input)
 {
-	return o << input.getRawBits();
+	int inum;
+	float frac;
+
+	inum = input.getRawBits() & ~0b11111111;
+	frac = input.getRawBits() & 0b11111111;
+
+	std::cout << "inum 0b" << std::bitset<64>(inum) << std::endl;
+	std::cout << "frac 0b" << std::bitset<64>(frac) << std::endl;
+
+	return o << inum << "." << frac;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
@@ -83,10 +104,5 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	return (_value << 8);
-}
-
-std::ostream &bin(std::ostream &o, const int input)
-{
-	return o << "bits : " << std::bitset<64>(input) << std::endl;
+	return (this->getRawBits() >> 8);
 }

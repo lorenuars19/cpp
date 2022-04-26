@@ -2,6 +2,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -36,6 +37,7 @@ private:
 };
 
 std::ostream &operator<<(std::ostream &o, const Fixed &input);
+std::ostream &bin(std::ostream &o, const int input);
 
 #ifndef NO_DEBUG
 

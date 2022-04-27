@@ -22,8 +22,7 @@ Fixed::Fixed(int const value) : _value(value)
 	_value = value << _frac;
 }
 
-Fixed::Fixed(float const fl)
-	: _value(((int)fl << _frac) + std::roundf((fl - (int)fl) * 256))
+Fixed::Fixed(float const fl) : _value(((int)fl << _frac) + std::roundf((fl - (int)fl) * 256))
 {
 	_FIXED_AUTO(32, "Fields Constructor (float)");
 }
@@ -53,10 +52,34 @@ bool Fixed::operator<=(const Fixed &rhs) { return _value <= rhs._value; }
 bool Fixed::operator==(const Fixed &rhs) { return _value == rhs._value; }
 bool Fixed::operator!=(const Fixed &rhs) { return _value != rhs._value; }
 
-Fixed Fixed::operator+(const Fixed &rhs) { return _value; }
-Fixed Fixed::operator-(const Fixed &rhs) { return _value; }
-Fixed Fixed::operator*(const Fixed &rhs) { return _value * (rhs._value / 256.0f); }
-Fixed Fixed::operator/(const Fixed &rhs) { return _value / (rhs._value / 256.0f); }
+Fixed Fixed::operator+(const Fixed &rhs)
+{
+	int itmp = _value + rhs._value;
+	Fixed ftmp;
+	ftmp.setRawBits(itmp);
+	return ftmp;
+}
+Fixed Fixed::operator-(const Fixed &rhs)
+{
+	int itmp = _value - rhs._value;
+	Fixed ftmp;
+	ftmp.setRawBits(itmp);
+	return ftmp;
+}
+Fixed Fixed::operator*(const Fixed &rhs)
+{
+	int itmp = _value * (rhs._value / 256.0f);
+	Fixed ftmp;
+	ftmp.setRawBits(itmp);
+	return ftmp;
+}
+Fixed Fixed::operator/(const Fixed &rhs)
+{
+	int itmp = _value / (rhs._value / 256.0f);
+	Fixed ftmp;
+	ftmp.setRawBits(itmp);
+	return ftmp;
+}
 
 Fixed Fixed::operator++() { return _value++; }
 Fixed Fixed::operator++(int) { return ++_value; }

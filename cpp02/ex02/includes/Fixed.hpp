@@ -10,28 +10,47 @@ class Fixed
 public:
 	typedef Fixed t;
 	// ----------------------------- Constructors ------------------------------ //
-	Fixed(void);			  // Default Constructor
+	Fixed();				  // Default Constructor
 	Fixed(int const value);	  // Fields Constructor integer
 	Fixed(float const value); // Fields Constructor floating point
 	Fixed(const t &c);		  // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Fixed(void); // Destructor
+	~Fixed(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Fixed &operator=(const t &a);
 	// Copy Assignement Operator
 
+	bool operator>(const Fixed &rhs);
+	bool operator<(const Fixed &rhs);
+	bool operator>=(const Fixed &rhs);
+	bool operator<=(const Fixed &rhs);
+	bool operator==(const Fixed &rhs);
+	bool operator!=(const Fixed &rhs);
+
+	Fixed operator+(const Fixed &rhs);
+	Fixed operator-(const Fixed &rhs);
+	Fixed operator*(const Fixed &rhs);
+	Fixed operator/(const Fixed &rhs);
+
+	Fixed operator++();
+	Fixed operator++(int);
+	Fixed operator--();
+	Fixed operator--(int);
+
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_value(void) const;
-	void set_value(int input);
-	int get_frac(void) const;
 
 	// --------------------------------- Methods ------------------------------- //
-	int getRawBits(void) const;
-	void seRawBits(int const raw);
-	float toFloat(void) const;
-	int toInt(void) const;
+	int getRawBits() const;
+	void setRawBits(int const raw);
+	float toFloat() const;
+	int toInt() const;
+
+	Fixed &min(Fixed &lhs, Fixed &rhs);
+	Fixed &min(Fixed const &lhs, Fixed const &rhs);
+	Fixed &max(Fixed &lhs, Fixed &rhs);
+	Fixed &max(Fixed const &lhs, Fixed const &rhs);
 
 private:
 	int _value;

@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Fixed::Fixed(void)
+Fixed::Fixed()
 {
 	_value = 0;
 	_FIXED_AUTO(32, "Default Constructor");
@@ -9,7 +9,7 @@ Fixed::Fixed(void)
 
 Fixed::Fixed(const t &c)
 {
-	_value = c.get_value();
+	_value = c.getRawBits();
 	_FIXED_AUTO(32, "Copy Constructor");
 }
 
@@ -29,7 +29,7 @@ Fixed::Fixed(float const fl)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 	_FIXED_AUTO(31, "Destructor called");
 }
@@ -37,7 +37,7 @@ Fixed::~Fixed(void)
 
 Fixed &Fixed::operator=(const t &a)
 {
-	_value = a.get_value();
+	_value = a.getRawBits();
 	return *this;
 }
 
@@ -46,35 +46,31 @@ std::ostream &operator<<(std::ostream &o, const Fixed &input)
 	return o << input.toFloat();
 }
 
-// --------------------------- Getters && Setters -------------------------- //
-int Fixed::get_value(void) const
-{
-	_FIXED_AUTO(33, "Getter");
-	return _value;
-}
+bool Fixed::operator>(const Fixed &rhs) { return getRawBits() > rhs.getRawBits(); }
+bool Fixed::operator<(const Fixed &rhs) { return getRawBits() < rhs.getRawBits(); }
+bool Fixed::operator>=(const Fixed &rhs) { return getRawBits() >= rhs.getRawBits(); }
+bool Fixed::operator<=(const Fixed &rhs) { return getRawBits() <= rhs.getRawBits(); }
+bool Fixed::operator==(const Fixed &rhs) { return getRawBits() == rhs.getRawBits(); }
+bool Fixed::operator!=(const Fixed &rhs) { return getRawBits() != rhs.getRawBits(); }
 
-void Fixed::set_value(int input)
-{
-	_FIXED_AUTO(34, "Setter");
-#ifndef NO_DEBUG
-	std::cout << "\033[1D";
-#endif
-	std::cout << " old(" << _value << ") new(" << input << ") " << std::endl;
-	_value = input;
-}
+Fixed Fixed::operator+(const Fixed &rhs) { return getRawBits() + rhs.getRawBits(); }
+Fixed Fixed::operator-(const Fixed &rhs) { return getRawBits() - rhs.getRawBits(); }
+Fixed Fixed::operator*(const Fixed &rhs) { return getRawBits() * rhs.getRawBits(); }
+Fixed Fixed::operator/(const Fixed &rhs) { return getRawBits() / rhs.getRawBits(); }
 
-int Fixed::get_frac(void) const
-{
-	return _frac;
-}
-// --------------------------------- Methods ------------------------------- //
+Fi
 
-int Fixed::getRawBits(void) const
+	// --------------------------- Getters && Setters -------------------------- //
+
+	// --------------------------------- Methods ------------------------------- //
+
+	int
+	Fixed::getRawBits() const
 {
 	return (_value);
 }
 
-void Fixed::seRawBits(int const raw)
+void Fixed::setRawBits(int const raw)
 {
 	_value = raw;
 }
@@ -86,5 +82,5 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	return (this->getRawBits() >> _frac);
+	return (_value >> _frac);
 }

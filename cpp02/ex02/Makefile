@@ -1,5 +1,5 @@
 # Name of the executable
-NAME = ex01.out
+NAME = ex02.out
 
 # CPP Make Variables
 CXX := c++

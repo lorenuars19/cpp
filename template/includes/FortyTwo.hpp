@@ -8,19 +8,19 @@ class FortyTwo
 	public:
 		typedef	FortyTwo t;
 // ----------------------------- Constructors ------------------------------ //
-		FortyTwo( void );	// Default Constructor
+		FortyTwo( );	// Default Constructor
 		FortyTwo( int var );	// Fields Constructor
 		FortyTwo( const t& c );	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~FortyTwo( void );	// Destructor
+		~FortyTwo( );	// Destructor
 
 // ------------------------------- Operators ------------------------------- //
 		FortyTwo & operator=( const t& a );
 		// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
-		int		get_var( void ) const;
+		int		get_var( ) const;
 		void	set_var( int input );
 
 // --------------------------------- Methods ------------------------------- //

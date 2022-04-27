@@ -101,6 +101,7 @@ function gen_class_file {
 
 	printf "\e[32;1m+++ Generating $CLASS_NAME Class -- $class_filename\e[0m\n"
 	mkdir -p $SRC_DIR
+	UP_CLASS_NAME=$(echo "${CLASS_NAME}" | tr '[:lower:]' '[:upper:]')
 
 	cat >$class_filename <<EOF
 #include "${CLASS_NAME}.hpp"

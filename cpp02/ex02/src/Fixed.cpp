@@ -81,8 +81,17 @@ Fixed Fixed::operator/(const Fixed &rhs)
 	return ftmp;
 }
 
-Fixed Fixed::operator++() { return _value++; }
-Fixed Fixed::operator++(int) { return ++_value; }
+Fixed Fixed::operator++()
+{
+	_value++;
+	return *this;
+}
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	_value++;
+	return tmp;
+}
 
 // --------------------------- Getters && Setters -------------------------- //
 

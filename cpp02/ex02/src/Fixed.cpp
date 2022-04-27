@@ -46,26 +46,26 @@ std::ostream &operator<<(std::ostream &o, const Fixed &input)
 	return o << input.toFloat();
 }
 
-bool Fixed::operator>(const Fixed &rhs) { return getRawBits() > rhs.getRawBits(); }
-bool Fixed::operator<(const Fixed &rhs) { return getRawBits() < rhs.getRawBits(); }
-bool Fixed::operator>=(const Fixed &rhs) { return getRawBits() >= rhs.getRawBits(); }
-bool Fixed::operator<=(const Fixed &rhs) { return getRawBits() <= rhs.getRawBits(); }
-bool Fixed::operator==(const Fixed &rhs) { return getRawBits() == rhs.getRawBits(); }
-bool Fixed::operator!=(const Fixed &rhs) { return getRawBits() != rhs.getRawBits(); }
+bool Fixed::operator>(const Fixed &rhs) { return _value > rhs._value; }
+bool Fixed::operator<(const Fixed &rhs) { return _value < rhs._value; }
+bool Fixed::operator>=(const Fixed &rhs) { return _value >= rhs._value; }
+bool Fixed::operator<=(const Fixed &rhs) { return _value <= rhs._value; }
+bool Fixed::operator==(const Fixed &rhs) { return _value == rhs._value; }
+bool Fixed::operator!=(const Fixed &rhs) { return _value != rhs._value; }
 
-Fixed Fixed::operator+(const Fixed &rhs) { return getRawBits() + rhs.getRawBits(); }
-Fixed Fixed::operator-(const Fixed &rhs) { return getRawBits() - rhs.getRawBits(); }
-Fixed Fixed::operator*(const Fixed &rhs) { return getRawBits() * rhs.getRawBits(); }
-Fixed Fixed::operator/(const Fixed &rhs) { return getRawBits() / rhs.getRawBits(); }
+Fixed Fixed::operator+(const Fixed &rhs) { return _value; }
+Fixed Fixed::operator-(const Fixed &rhs) { return _value; }
+Fixed Fixed::operator*(const Fixed &rhs) { return _value * (rhs._value / 256.0f); }
+Fixed Fixed::operator/(const Fixed &rhs) { return _value / (rhs._value / 256.0f); }
 
-Fi
+Fixed Fixed::operator++() { return _value++; }
+Fixed Fixed::operator++(int) { return ++_value; }
 
-	// --------------------------- Getters && Setters -------------------------- //
+// --------------------------- Getters && Setters -------------------------- //
 
-	// --------------------------------- Methods ------------------------------- //
+// --------------------------------- Methods ------------------------------- //
 
-	int
-	Fixed::getRawBits() const
+int Fixed::getRawBits() const
 {
 	return (_value);
 }
@@ -83,4 +83,24 @@ float Fixed::toFloat() const
 int Fixed::toInt() const
 {
 	return (_value >> _frac);
+}
+
+Fixed &Fixed::min(Fixed &lhs, Fixed &rhs)
+{
+	return (lhs.getRawBits() < rhs.getRawBits()) ? (lhs) : (rhs);
+}
+
+Fixed const &Fixed::min(Fixed const &lhs, Fixed const &rhs)
+{
+	return (lhs.getRawBits() < rhs.getRawBits()) ? (lhs) : (rhs);
+}
+
+Fixed &Fixed::max(Fixed &lhs, Fixed &rhs)
+{
+	return ((lhs.getRawBits() > rhs.getRawBits()) ? (lhs) : (rhs));
+}
+
+Fixed const &Fixed::max(Fixed const &lhs, Fixed const &rhs)
+{
+	return ((lhs.getRawBits() > rhs.getRawBits()) ? (lhs) : (rhs));
 }

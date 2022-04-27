@@ -47,10 +47,10 @@ public:
 	float toFloat() const;
 	int toInt() const;
 
-	Fixed &min(Fixed &lhs, Fixed &rhs);
-	Fixed &min(Fixed const &lhs, Fixed const &rhs);
-	Fixed &max(Fixed &lhs, Fixed &rhs);
-	Fixed &max(Fixed const &lhs, Fixed const &rhs);
+	static Fixed &min(Fixed &lhs, Fixed &rhs);
+	static Fixed const &min(Fixed const &lhs, Fixed const &rhs);
+	static Fixed &max(Fixed &lhs, Fixed &rhs);
+	static Fixed const &max(Fixed const &lhs, Fixed const &rhs);
 
 private:
 	int _value;

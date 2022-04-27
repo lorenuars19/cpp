@@ -42,19 +42,19 @@ class ${CLASS_NAME}
 	public:
 		typedef	${CLASS_NAME} t;
 // ----------------------------- Constructors ------------------------------ //
-		${CLASS_NAME}( void );	// Default Constructor
+		${CLASS_NAME}( );	// Default Constructor
 		${CLASS_NAME}( int var );	// Fields Constructor
 		${CLASS_NAME}( const t& c );	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~${CLASS_NAME}( void );	// Destructor
+		~${CLASS_NAME}( );	// Destructor
 
 // ------------------------------- Operators ------------------------------- //
 		${CLASS_NAME} & operator=( const t& a );
 		// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
-		int		get_var( void ) const;
+		int		get_var( ) const;
 		void	set_var( int input );
 
 // --------------------------------- Methods ------------------------------- //
@@ -106,7 +106,7 @@ function gen_class_file {
 #include "${CLASS_NAME}.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-${CLASS_NAME}::${CLASS_NAME}( void )
+${CLASS_NAME}::${CLASS_NAME}( )
 {
 	_var = 0;
 	_${UP_CLASS_NAME}_AUTO(32, "Default Constructor");
@@ -124,7 +124,7 @@ ${CLASS_NAME}::${CLASS_NAME}( int var ) : _var(var)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-${CLASS_NAME}::~${CLASS_NAME}( void )
+${CLASS_NAME}::~${CLASS_NAME}( )
 {
 	_${UP_CLASS_NAME}_AUTO(31, "Destructor called");
 }
@@ -137,7 +137,7 @@ ${CLASS_NAME} & ${CLASS_NAME}::operator=( const t& a )
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int	${CLASS_NAME}::get_var( void ) const
+int	${CLASS_NAME}::get_var( ) const
 {
 	_${UP_CLASS_NAME}_AUTO(33, "Getter");
 	return _var;

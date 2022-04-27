@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Fixed::Fixed(void)
+Fixed::Fixed()
 {
 	_value = 0;
 	_FIXED_AUTO(32, "Default Constructor");
@@ -14,7 +14,7 @@ Fixed::Fixed(const t &c)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 	_FIXED_AUTO(31, "Destructor called");
 }
@@ -27,7 +27,7 @@ Fixed &Fixed::operator=(const t &a)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int Fixed::get_value(void) const
+int Fixed::get_value() const
 {
 	_FIXED_AUTO(33, "Getter");
 	return _value;
@@ -45,7 +45,7 @@ void Fixed::set_value(int input)
 
 // --------------------------------- Methods ------------------------------- //
 
-int Fixed::getRawBits(void) const
+int Fixed::getRawBits() const
 {
 	_FIXED_AUTO(34, "getRawBits")
 	return (_value);

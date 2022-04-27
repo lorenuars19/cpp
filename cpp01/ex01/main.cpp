@@ -2,7 +2,7 @@
 
 #define N_ZOMBS 4
 
-int main(void)
+int main()
 {
 	Zombie *zombs = zombieHorde(N_ZOMBS, "zombot");
 

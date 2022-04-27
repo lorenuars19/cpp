@@ -1,8 +1,8 @@
-#include <iostream>
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+#include <iostream>
 
-int main(void)
+int main()
 {
 	Weapon club = Weapon("Club");
 

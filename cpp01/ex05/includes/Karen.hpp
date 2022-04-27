@@ -11,12 +11,12 @@ public:
 	typedef void (Karen::*ptr_func)();
 
 	// ----------------------------- Constructors ------------------------------ //
-	Karen(void); // Default Constructor
+	Karen(); // Default Constructor
 	// Karen( int var );	// Fields Constructor
 	Karen(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Karen(void); // Destructor
+	~Karen(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Karen &operator=(const t &a);
@@ -28,10 +28,10 @@ public:
 	void complain(std::string level);
 
 private:
-	void debug(void);
-	void info(void);
-	void warning(void);
-	void error(void);
+	void debug();
+	void info();
+	void warning();
+	void error();
 };
 
 #ifndef NO_DEBUG

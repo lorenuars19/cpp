@@ -8,12 +8,12 @@ class Zombie
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	Zombie(void);					// Default Constructor
+	Zombie();						// Default Constructor
 	Zombie(const std::string name); // Fields Constructor
 	Zombie(const Zombie &copy);		// Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Zombie(void); // Destructor
+	~Zombie(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Zombie &operator=(const Zombie &assign);
@@ -23,7 +23,7 @@ public:
 	std::string get_name() const;
 	void set_name(std::string name);
 	// --------------------------------- Methods ------------------------------- //
-	void anounce(void);
+	void anounce();
 
 private:
 	std::string _name;

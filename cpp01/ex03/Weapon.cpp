@@ -1,7 +1,7 @@
 #include "Weapon.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Weapon::Weapon(void)
+Weapon::Weapon()
 {
 	_type = "";
 	_AUTO(32, "Default Constructor") << std::endl;
@@ -19,7 +19,7 @@ Weapon::Weapon(std::string type) : _type(type)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Weapon::~Weapon(void)
+Weapon::~Weapon()
 {
 	_AUTO(31, "Destructor called") << std::endl;
 }
@@ -32,7 +32,7 @@ Weapon &Weapon::operator=(const Weapon &assign)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string Weapon::getType(void) const
+std::string Weapon::getType() const
 {
 	// _AUTO(33, "Getter");
 	return _type;

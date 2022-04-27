@@ -1,7 +1,7 @@
 #include "HumanB.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-HumanB::HumanB(void) : _name(""), _weapon(NULL)
+HumanB::HumanB() : _name(""), _weapon(NULL)
 {
 	_AUTO(32, "Default Constructor") << std::endl;
 }
@@ -19,7 +19,7 @@ HumanB::HumanB(std::string name) : _name(name),
 }
 
 // ------------------------------ Destructor ------------------------------- //
-HumanB::~HumanB(void)
+HumanB::~HumanB()
 {
 	_AUTO(31, "Destructor called") << std::endl;
 }
@@ -33,7 +33,7 @@ HumanB &HumanB::operator=(const HumanB &assign)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string HumanB::get_name(void) const
+std::string HumanB::get_name() const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _name;
@@ -45,7 +45,7 @@ void HumanB::set_name(int input)
 	_name = input;
 }
 
-Weapon &HumanB::get_weapon(void) const
+Weapon &HumanB::get_weapon() const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return (Weapon &)*_weapon;
@@ -65,7 +65,7 @@ void HumanB::set_weapon(Weapon &input)
 }
 
 // --------------------------------- Methods ------------------------------- //
-void HumanB::attack(void)
+void HumanB::attack()
 {
 	std::cout << _name << " attacks with ";
 	if (_weapon)

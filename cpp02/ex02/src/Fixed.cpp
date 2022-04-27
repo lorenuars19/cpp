@@ -75,12 +75,12 @@ void Fixed::setRawBits(int const raw)
 	_value = raw;
 }
 
-float Fixed::toFloat(void) const
+float Fixed::toFloat() const
 {
 	return ((_value >> _frac) + ((_value & 0xff) / 256.0f));
 }
 
-int Fixed::toInt(void) const
+int Fixed::toInt() const
 {
 	return (_value >> _frac);
 }

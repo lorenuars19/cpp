@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Fixed::Fixed(void)
+Fixed::Fixed()
 {
 	_value = 0;
 	_FIXED_AUTO(32, "Default Constructor");
@@ -29,7 +29,7 @@ Fixed::Fixed(float const fl)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 	_FIXED_AUTO(31, "Destructor called");
 }
@@ -47,7 +47,7 @@ std::ostream &operator<<(std::ostream &o, const Fixed &input)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int Fixed::get_value(void) const
+int Fixed::get_value() const
 {
 	_FIXED_AUTO(33, "Getter");
 	return _value;
@@ -63,13 +63,13 @@ void Fixed::set_value(int input)
 	_value = input;
 }
 
-int Fixed::get_frac(void) const
+int Fixed::get_frac() const
 {
 	return _frac;
 }
 // --------------------------------- Methods ------------------------------- //
 
-int Fixed::getRawBits(void) const
+int Fixed::getRawBits() const
 {
 	return (_value);
 }
@@ -79,12 +79,12 @@ void Fixed::seRawBits(int const raw)
 	_value = raw;
 }
 
-float Fixed::toFloat(void) const
+float Fixed::toFloat() const
 {
 	return ((_value >> _frac) + ((_value & 0xff) / 256.0f));
 }
 
-int Fixed::toInt(void) const
+int Fixed::toInt() const
 {
 	return (this->getRawBits() >> _frac);
 }

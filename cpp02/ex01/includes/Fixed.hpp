@@ -10,28 +10,28 @@ class Fixed
 public:
 	typedef Fixed t;
 	// ----------------------------- Constructors ------------------------------ //
-	Fixed(void);			  // Default Constructor
+	Fixed();				  // Default Constructor
 	Fixed(int const value);	  // Fields Constructor integer
 	Fixed(float const value); // Fields Constructor floating point
 	Fixed(const t &c);		  // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Fixed(void); // Destructor
+	~Fixed(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Fixed &operator=(const t &a);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_value(void) const;
+	int get_value() const;
 	void set_value(int input);
-	int get_frac(void) const;
+	int get_frac() const;
 
 	// --------------------------------- Methods ------------------------------- //
-	int getRawBits(void) const;
+	int getRawBits() const;
 	void seRawBits(int const raw);
-	float toFloat(void) const;
-	int toInt(void) const;
+	float toFloat() const;
+	int toInt() const;
 
 private:
 	int _value;

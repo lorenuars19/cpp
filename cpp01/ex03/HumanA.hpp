@@ -9,25 +9,25 @@ class HumanA
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	HumanA(void);							  // Default Constructor
+	HumanA();								  // Default Constructor
 	HumanA(std::string name, Weapon &weapon); // Fields Constructor
 	HumanA(const HumanA &copy);				  // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~HumanA(void); // Destructor
+	~HumanA(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	HumanA &operator=(const HumanA &assign);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	std::string get_name(void) const;
+	std::string get_name() const;
 	void set_name(int input);
 
-	Weapon &get_weapon(void) const;
+	Weapon &get_weapon() const;
 	void set_weapon(Weapon &input);
 	// --------------------------------- Methods ------------------------------- //
-	void attack(void);
+	void attack();
 
 private:
 	std::string _name;

@@ -3,7 +3,7 @@
 Weapon _defaultWeapon = Weapon();
 
 // ----------------------------- Constructors ------------------------------ //
-HumanA::HumanA(void) : _name(""), _weapon(_defaultWeapon)
+HumanA::HumanA() : _name(""), _weapon(_defaultWeapon)
 {
 	// _weapon = ;
 	_AUTO(32, "Default Constructor") << std::endl;
@@ -23,7 +23,7 @@ HumanA::HumanA(std::string name, Weapon &weapon) : _name(name),
 }
 
 // ------------------------------ Destructor ------------------------------- //
-HumanA::~HumanA(void)
+HumanA::~HumanA()
 {
 	_AUTO(31, "Destructor called") << std::endl;
 }
@@ -37,7 +37,7 @@ HumanA &HumanA::operator=(const HumanA &assign)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string HumanA::get_name(void) const
+std::string HumanA::get_name() const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _name;
@@ -49,7 +49,7 @@ void HumanA::set_name(int input)
 	_name = input;
 }
 
-Weapon &HumanA::get_weapon(void) const
+Weapon &HumanA::get_weapon() const
 {
 	_AUTO(33, "Getter") << std::endl;
 	return _weapon;
@@ -64,7 +64,7 @@ void HumanA::set_weapon(Weapon &input)
 }
 
 // --------------------------------- Methods ------------------------------- //
-void HumanA::attack(void)
+void HumanA::attack()
 {
 	std::cout << _name << " attacks with "
 			  << _weapon.getType()

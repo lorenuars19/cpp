@@ -1,7 +1,7 @@
-#include <ctime>
-#include <iostream>
-#include <iomanip>
 #include "Account.hpp"
+#include <ctime>
+#include <iomanip>
+#include <iostream>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -12,10 +12,10 @@ int Account::_totalNbWithdrawals = 0;
 // CONSTRUCTORS / DESTRUCTORS
 ////////////////////////////////////////////////////////////////////////////////
 
-Account::Account(void) : _accountIndex(0),
-						 _amount(0),
-						 _nbDeposits(0),
-						 _nbWithdrawals(0)
+Account::Account() : _accountIndex(0),
+					 _amount(0),
+					 _nbDeposits(0),
+					 _nbWithdrawals(0)
 {
 }
 
@@ -35,7 +35,7 @@ Account::Account(int initial_deposit) : _accountIndex(_nbAccounts),
 	_nbAccounts++;
 }
 
-Account::~Account(void)
+Account::~Account()
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
@@ -44,7 +44,7 @@ Account::~Account(void)
 			  << std::endl;
 }
 
-void Account::_displayTimestamp(void)
+void Account::_displayTimestamp()
 {
 	time_t curr_time = time(NULL);
 	tm *t = std::gmtime(&curr_time);
@@ -100,12 +100,12 @@ bool Account::makeWithdrawal(int withdrawal)
 	return true;
 }
 
-int Account::checkAmount(void) const
+int Account::checkAmount() const
 {
 	return _amount;
 }
 
-void Account::displayStatus(void) const
+void Account::displayStatus() const
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
@@ -119,27 +119,27 @@ void Account::displayStatus(void) const
 // GETTERS / SETTERS
 ////////////////////////////////////////////////////////////////////////////////
 
-int Account::getNbAccounts(void)
+int Account::getNbAccounts()
 {
 	return _nbAccounts;
 }
 
-int Account::getTotalAmount(void)
+int Account::getTotalAmount()
 {
 	return _totalAmount;
 }
 
-int Account::getNbDeposits(void)
+int Account::getNbDeposits()
 {
 	return _totalNbDeposits;
 }
 
-int Account::getNbWithdrawals(void)
+int Account::getNbWithdrawals()
 {
 	return _totalNbWithdrawals;
 }
 
-void Account::displayAccountsInfos(void)
+void Account::displayAccountsInfos()
 {
 	_displayTimestamp();
 	std::cout << "accounts:" << getNbAccounts();

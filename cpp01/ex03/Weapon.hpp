@@ -8,19 +8,19 @@ class Weapon
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	Weapon(void);				// Default Constructor
+	Weapon();					// Default Constructor
 	Weapon(std::string type);	// Fields Constructor
 	Weapon(const Weapon &copy); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Weapon(void); // Destructor
+	~Weapon(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Weapon &operator=(const Weapon &assign);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	std::string getType(void) const;
+	std::string getType() const;
 	void setType(std::string input);
 
 	// --------------------------------- Methods ------------------------------- //

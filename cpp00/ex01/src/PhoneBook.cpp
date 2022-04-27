@@ -2,13 +2,13 @@
 #include <iomanip>
 
 // ----------------------------- Constructors ------------------------------ //
-PhoneBook::PhoneBook(void) : cont_index(0)
+PhoneBook::PhoneBook() : cont_index(0)
 {
 	_AUTO(32, "Default Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
-PhoneBook::~PhoneBook(void)
+PhoneBook::~PhoneBook()
 {
 	_AUTO(31, "Destructor called");
 }
@@ -22,7 +22,7 @@ PhoneBook &PhoneBook::operator=(const PhoneBook &assign)
 
 // --------------------------- Getters && Setters -------------------------- //
 // --------------------------------- Methods ------------------------------- //
-int PhoneBook::add_contact(void)
+int PhoneBook::add_contact()
 {
 	std::string fname;
 	std::string lname;
@@ -52,7 +52,7 @@ int PhoneBook::add_contact(void)
 	return 0;
 }
 
-void PhoneBook::show_contacts(void) const
+void PhoneBook::show_contacts() const
 {
 	std::cout << " -------------------------------------------" << std::endl;
 	for (int i = 0; i < N_CONTACTS; i++)
@@ -62,9 +62,9 @@ void PhoneBook::show_contacts(void) const
 	std::cout << " -------------------------------------------" << std::endl;
 }
 
-int PhoneBook::search_contact(void) const
+int PhoneBook::search_contact() const
 {
-	int			index;
+	int index;
 
 	std::cout << "--- SEARCH CONTACTS ---" << std::endl;
 	show_contacts();
@@ -75,7 +75,7 @@ int PhoneBook::search_contact(void) const
 		std::cout << "\033[2KEnter the index of the contact you want to see : ";
 		try
 		{
-			std::string	str;
+			std::string str;
 			std::getline(std::cin, str);
 			index = std::stoi(str);
 		}

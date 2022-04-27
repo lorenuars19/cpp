@@ -1,31 +1,31 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 class Fixed
 {
 public:
 	typedef Fixed t;
 	// ----------------------------- Constructors ------------------------------ //
-	Fixed(void); // Default Constructor
+	Fixed(); // Default Constructor
 
 	Fixed(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Fixed(void); // Destructor
+	~Fixed(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Fixed &operator=(const t &a);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_value(void) const;
+	int get_value() const;
 	void set_value(int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	int getRawBits(void) const;
+	int getRawBits() const;
 	void seRawBits(int const raw);
 
 private:

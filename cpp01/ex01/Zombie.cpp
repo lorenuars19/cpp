@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Zombie::Zombie(void)
+Zombie::Zombie()
 {
 	_name = "";
 	_AUTO(32, "Default Constructor") << std::endl;
@@ -19,7 +19,7 @@ Zombie::Zombie(const std::string name) : _name(name)
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Zombie::~Zombie(void)
+Zombie::~Zombie()
 {
 	_AUTO(31, "Destructor called") << std::endl;
 }
@@ -46,7 +46,7 @@ std::string Zombie::get_name() const
 
 // --------------------------------- Methods ------------------------------- //
 
-void Zombie::anounce(void)
+void Zombie::anounce()
 {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..."
 			  << std::endl;

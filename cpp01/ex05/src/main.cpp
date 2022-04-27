@@ -1,6 +1,6 @@
 #include "Karen.hpp"
 
-int main(void)
+int main()
 {
 	Karen k;
 

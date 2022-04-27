@@ -9,25 +9,25 @@ class HumanB
 {
 public:
 	// ----------------------------- Constructors ------------------------------ //
-	HumanB(void);				// Default Constructor
+	HumanB();					// Default Constructor
 	HumanB(std::string name);	// Fields Constructor
 	HumanB(const HumanB &copy); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~HumanB(void); // Destructor
+	~HumanB(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	HumanB &operator=(const HumanB &assign);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	std::string get_name(void) const;
+	std::string get_name() const;
 	void set_name(int input);
 
-	Weapon &get_weapon(void) const;
+	Weapon &get_weapon() const;
 	void set_weapon(Weapon &input);
 	// --------------------------------- Methods ------------------------------- //
-	void attack(void);
+	void attack();
 
 private:
 	std::string _name;

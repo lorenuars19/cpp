@@ -21,9 +21,14 @@ SHELL := bash
 
 SRCS := \
 	./src/Animal.cpp \
+	./src/Cat.cpp \
+	./src/Dog.cpp \
+	./src/main.cpp \
 
 HEADERS := \
 	./includes/Animal.hpp\
+	./includes/Cat.hpp\
+	./includes/Dog.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

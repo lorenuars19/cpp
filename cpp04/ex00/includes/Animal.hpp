@@ -1,32 +1,30 @@
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "ClapTrap.hpp"
 #include <iostream>
 
-class FragTrap : public ClapTrap
+class Animal
 {
 public:
-	typedef FragTrap t;
+	typedef Animal t;
 	// ----------------------------- Constructors ------------------------------ //
-	FragTrap();					// Default Constructor
-	FragTrap(std::string name); // Fields Constructor
-	FragTrap(const t &c);		// Copy Constructor
+	Animal();			// Default Constructor
+	Animal(int var);	// Fields Constructor
+	Animal(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~FragTrap(); // Destructor
+	~Animal(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
-	FragTrap &operator=(const t &a);
+	Animal &operator=(const t &a);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
+	std::string get_type() const;
 	// --------------------------------- Methods ------------------------------- //
-	void displayStatus();
 
-	void highFiveGuys();
-
-private:
+protected:
+	std::string type;
 };
 
 #ifndef NO_DEBUG
@@ -35,19 +33,19 @@ private:
 #define _ARG(arg) #arg << "(" << arg << ") "
 #endif /* _ARG */
 
-#define _FRAGTRAP_ARGS ""
-#define _FRAGTRAP_AUTO(COLOR_CODE, TEXT)                        \
+#define _ANIMAL_ARGS ""
+#define _ANIMAL_AUTO(COLOR_CODE, TEXT)                          \
 	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \
 			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \
 			  << "[\033[34;47m" << this                         \
-			  << "\033[0m]\033[0m: " << _FRAGTRAP_ARGS          \
+			  << "\033[0m]\033[0m: " << _ANIMAL_ARGS            \
 			  << "}" << std::endl;
 #else
 
-#define _FRAGTRAP_AUTO(x, y) ;
-#define _FRAGTRAP_ARGS ""
+#define _ANIMAL_AUTO(x, y) ;
+#define _ANIMAL_ARGS ""
 #define _ARG ""
 
 #endif /* NO_DEBUG */
 
-#endif /* FRAGTRAP_HPP */
+#endif /* ANIMAL_HPP */

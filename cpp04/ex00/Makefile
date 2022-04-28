@@ -1,5 +1,5 @@
 # Name of the executable
-NAME = ex03.out
+NAME = exec.out
 
 # CPP Make Variables
 CXX := g++
@@ -20,15 +20,10 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/ClapTrap.cpp \
-	./src/FragTrap.cpp \
-	./src/main.cpp \
-	./src/ScavTrap.cpp \
+	./src/Animal.cpp \
 
 HEADERS := \
-	./includes/ClapTrap.hpp\
-	./includes/FragTrap.hpp\
-	./includes/ScavTrap.hpp\
+	./includes/Animal.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

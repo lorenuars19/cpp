@@ -22,6 +22,8 @@ public:
 
 	// --------------------------- Getters && Setters -------------------------- //
 	// --------------------------------- Methods ------------------------------- //
+	void displayStatus();
+
 	void highFiveGuys();
 
 private:

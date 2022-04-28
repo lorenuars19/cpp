@@ -39,3 +39,19 @@ FragTrap &FragTrap::operator=(const t &a)
 
 // --------------------------- Getters && Setters -------------------------- //
 // --------------------------------- Methods ------------------------------- //
+void FragTrap::displayStatus()
+{
+	std::cout << "\e[34;1mFragTrap [" << this
+			  << "] name '" << get_name()
+			  << "' hp " << get_hp()
+			  << ", ep " << get_ep()
+			  << ", ap " << get_ap()
+			  << " : \e[0m";
+}
+
+void FragTrap::highFiveGuys()
+{
+	ClapTrap::displayStatus();
+	displayStatus();
+	std::cout << "High five guys" << std::endl;
+}

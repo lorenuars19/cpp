@@ -1,38 +1,37 @@
-#include "Cat.hpp"
+#include "Brain.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Cat::Cat()
+Brain::Brain()
 {
-	set_type("Cat");
-	brain = new Brain();
-	_CAT_AUTO(32, "Default Constructor");
+	_BRAIN_AUTO(32, "Default Constructor");
+	for (int i = 0; i < ARR_SIZ; i++)
+	{
+		ideas[i] = "";
+	}
 }
 
-Cat::Cat(const t &c)
+Brain::Brain(const t &c)
 {
-	(void)c;
-	_CAT_AUTO(32, "Copy Constructor");
+	_BRAIN_AUTO(32, "Copy Constructor");
+}
+
+Brain::Brain(int input) : var(input)
+{
+	_BRAIN_AUTO(32, "Fields Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
-Cat::~Cat()
+Brain::~Brain()
 {
-	delete brain;
-	_CAT_AUTO(31, "Destructor called");
+	_BRAIN_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //
 
-Cat &Cat::operator=(const t &a)
+Brain &Brain::operator=(const t &a)
 {
-	(void)a;
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
 
 // --------------------------------- Methods ------------------------------- //
-
-void Cat::makeSound()
-{
-	std::cout << "Meow\n";
-}

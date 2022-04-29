@@ -21,12 +21,14 @@ SHELL := bash
 
 SRCS := \
 	./src/Animal.cpp \
+	./src/Brain.cpp \
 	./src/Cat.cpp \
 	./src/Dog.cpp \
 	./src/main.cpp \
 
 HEADERS := \
 	./includes/Animal.hpp\
+	./includes/Brain.hpp\
 	./includes/Cat.hpp\
 	./includes/Dog.hpp\
 

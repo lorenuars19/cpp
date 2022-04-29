@@ -4,13 +4,11 @@
 
 int main()
 {
-	Animal a;
-	a.makeSound();
+	const *Animal j = new Dog();
+	const *Animal i = new Cat();
 
-	Cat c;
+	delete j;
+	delete i;
 
-	c.makeSound();
-
-	Dog d;
-	d.makeSound();
+	return 0;
 }

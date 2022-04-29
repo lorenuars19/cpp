@@ -12,12 +12,8 @@ Brain::Brain()
 
 Brain::Brain(const t &c)
 {
+	(*this) = c;
 	_BRAIN_AUTO(32, "Copy Constructor");
-}
-
-Brain::Brain(int input) : var(input)
-{
-	_BRAIN_AUTO(32, "Fields Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
@@ -29,6 +25,11 @@ Brain::~Brain()
 
 Brain &Brain::operator=(const t &a)
 {
+	_BRAIN_AUTO(33, "Assignement operator")
+	for (int i = 0; i < ARR_SIZ; i++)
+	{
+		ideas[i] = a.ideas[i];
+	}
 	return *this;
 }
 

@@ -10,25 +10,33 @@ Cat::Cat()
 
 Cat::Cat(const t &c)
 {
-	(void)c;
+	(*this) = c;
 	_CAT_AUTO(32, "Copy Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
 Cat::~Cat()
 {
-	delete brain;
+	// delete brain;
 	_CAT_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //
 
 Cat &Cat::operator=(const t &a)
 {
-	(void)a;
+	_CAT_AUTO(34, "Copy Assignement Operator called");
+	if (this != &a)
+	{
+		type = a.type;
+		brain = a.brain;
+	}
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
+
+void Cat::set_brain(Brain &input) { brain = new Brain(input); }
+Brain &Cat::get_brain() const { return *brain; }
 
 // --------------------------------- Methods ------------------------------- //
 

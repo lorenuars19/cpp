@@ -21,7 +21,8 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-
+	void set_brain(Brain &brain);
+	Brain &get_brain() const;
 	// --------------------------------- Methods ------------------------------- //
 	void makeSound();
 

@@ -12,7 +12,7 @@ public:
 	Animal(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Animal(); // Destructor
+	virtual ~Animal(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
 	Animal &operator=(const t &a);

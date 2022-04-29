@@ -10,8 +10,8 @@ class Brain
 public:
 	typedef Brain t;
 	// ----------------------------- Constructors ------------------------------ //
-	Brain();		   // Default Constructor
-	Brain(int var);	   // Fields Constructor
+	Brain(); // Default Constructor
+
 	Brain(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //

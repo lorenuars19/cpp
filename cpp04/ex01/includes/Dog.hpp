@@ -2,6 +2,8 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
+
 #include <iostream>
 
 class Dog : public Animal
@@ -20,11 +22,13 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-
+	void set_brain(Brain &brain);
+	Brain &get_brain() const;
 	// --------------------------------- Methods ------------------------------- //
 	void makeSound();
 
 private:
+	Brain *brain;
 };
 
 #ifndef NO_DEBUG

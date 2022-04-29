@@ -40,7 +40,7 @@ Brain &Cat::get_brain() const { return *brain; }
 
 // --------------------------------- Methods ------------------------------- //
 
-void Cat::makeSound()
+void Cat::makeSound()const
 {
 	std::cout << "Meow\n";
 }

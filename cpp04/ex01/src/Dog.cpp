@@ -38,7 +38,7 @@ void Dog::set_brain(Brain &input) { brain = new Brain(input); }
 Brain &Dog::get_brain() const { return *brain; }
 // --------------------------------- Methods ------------------------------- //
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
 	std::cout << "Bark\n";
 }

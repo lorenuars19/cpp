@@ -30,7 +30,7 @@ Dog &Dog::operator=(const t &a)
 
 // --------------------------------- Methods ------------------------------- //
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
 	std::cout << "Bark\n";
 }

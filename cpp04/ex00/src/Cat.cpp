@@ -30,7 +30,7 @@ Cat &Cat::operator=(const t &a)
 
 // --------------------------------- Methods ------------------------------- //
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
 	std::cout << "Meow\n";
 }

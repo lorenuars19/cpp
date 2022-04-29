@@ -34,6 +34,7 @@ int main()
 				  << " b.brain " << &(b.get_brain())
 				  << " d.brain " << &(d.get_brain())
 				  << std::endl;
+
 		delete a;
 	}
 

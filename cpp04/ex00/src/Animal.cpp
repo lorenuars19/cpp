@@ -32,7 +32,7 @@ void Animal::set_type(std::string input) { type = input; }
 
 // --------------------------------- Methods ------------------------------- //
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
 	std::cout << "Generic animal\n";
 }

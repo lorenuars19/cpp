@@ -24,7 +24,7 @@ public:
 	void set_brain(Brain &brain);
 	Brain &get_brain() const;
 	// --------------------------------- Methods ------------------------------- //
-	void makeSound();
+	void makeSound() const;
 
 private:
 	Brain *brain;

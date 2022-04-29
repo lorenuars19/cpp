@@ -28,7 +28,7 @@ Cat &Cat::operator=(const t &a)
 	if (this != &a)
 	{
 		type = a.type;
-		brain = a.brain;
+		brain = new Brain(*(a.brain));
 	}
 	return *this;
 }

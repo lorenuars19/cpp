@@ -7,11 +7,14 @@ int main()
 
 	{
 		const Animal *a = new Cat();
+		std::cout << "\n";
 		Cat b;
-		// Cat c((Cat &)a);
+		std::cout << "\n";
+		Cat c(a);
 		Cat d(b);
+		std::cout << "\n";
 
-		std::cout << "A.type " << &(((Cat *)a)->get_brain())
+		std::cout << "A.brain " << &(((Cat *)a)->get_brain())
 				  << " b.brain " << &(b.get_brain())
 				  << " d.brain " << &(d.get_brain())
 				  << std::endl;
@@ -20,10 +23,17 @@ int main()
 	}
 	{
 		const Animal *a = new Dog();
+		std::cout << "\n";
 		Dog b;
+		std::cout << "\n";
 		// Dog c(a);
 		Dog d(b);
+		std::cout << "\n";
 
+		std::cout << "A.brain " << &(((Dog *)a)->get_brain())
+				  << " b.brain " << &(b.get_brain())
+				  << " d.brain " << &(d.get_brain())
+				  << std::endl;
 		delete a;
 	}
 

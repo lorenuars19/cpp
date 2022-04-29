@@ -25,7 +25,7 @@ Brain::~Brain()
 
 Brain &Brain::operator=(const t &a)
 {
-	_BRAIN_AUTO(33, "Assignement operator")
+	_BRAIN_AUTO(34, "Copy Assignement Operator called")
 	for (int i = 0; i < ARR_SIZ; i++)
 	{
 		ideas[i] = a.ideas[i];

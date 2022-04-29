@@ -10,7 +10,6 @@ public:
 	typedef Cat t;
 	// ----------------------------- Constructors ------------------------------ //
 	Cat();			 // Default Constructor
-	Cat(int var);	 // Fields Constructor
 	Cat(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
@@ -21,14 +20,11 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_var() const;
-	void set_var(int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	int is_equal(const Cat comp);
+	void makeSound();
 
 private:
-	int var;
 };
 
 #ifndef NO_DEBUG
@@ -37,7 +33,7 @@ private:
 #define _ARG(arg) #arg << "(" << arg << ") "
 #endif /* _ARG */
 
-#define _CAT_ARGS _ARG(var)
+#define _CAT_ARGS ""
 #define _CAT_AUTO(COLOR_CODE, TEXT)                             \
 	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \
 			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \

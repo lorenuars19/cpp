@@ -9,7 +9,6 @@ public:
 	typedef Animal t;
 	// ----------------------------- Constructors ------------------------------ //
 	Animal();			// Default Constructor
-	Animal(int var);	// Fields Constructor
 	Animal(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
@@ -21,7 +20,9 @@ public:
 
 	// --------------------------- Getters && Setters -------------------------- //
 	std::string get_type() const;
+	void set_type(std::string input);
 	// --------------------------------- Methods ------------------------------- //
+	void makeSound();
 
 protected:
 	std::string type;

@@ -10,7 +10,6 @@ public:
 	typedef Dog t;
 	// ----------------------------- Constructors ------------------------------ //
 	Dog();			 // Default Constructor
-	Dog(int var);	 // Fields Constructor
 	Dog(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
@@ -21,14 +20,11 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	int get_var() const;
-	void set_var(int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	int is_equal(const Dog comp);
+	void makeSound();
 
 private:
-	int var;
 };
 
 #ifndef NO_DEBUG
@@ -37,7 +33,7 @@ private:
 #define _ARG(arg) #arg << "(" << arg << ") "
 #endif /* _ARG */
 
-#define _DOG_ARGS _ARG(var)
+#define _DOG_ARGS ""
 #define _DOG_AUTO(COLOR_CODE, TEXT)                             \
 	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \
 			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \

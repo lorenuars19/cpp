@@ -7,7 +7,7 @@ Animal::Animal(const t &c)
 	_ANIMAL_AUTO(32, "Copy Constructor");
 }
 
-Animal::Animal() : type("")
+Animal::Animal() : type("Generic")
 {
 	_ANIMAL_AUTO(32, "Default Constructor");
 }
@@ -28,5 +28,11 @@ Animal &Animal::operator=(const t &a)
 // --------------------------- Getters && Setters -------------------------- //
 
 std::string Animal::get_type() const { return type; }
+void Animal::set_type(std::string input) { type = input; }
 
 // --------------------------------- Methods ------------------------------- //
+
+void Animal::makeSound()
+{
+	std::cout << "Generic animal\n";
+}

@@ -5,6 +5,8 @@
 int main()
 {
 
+	// Animal a;
+	// should not compile
 	{
 		const Animal *a = new Cat();
 		std::cout << "\n";

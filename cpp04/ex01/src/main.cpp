@@ -10,7 +10,7 @@ int main()
 		std::cout << "\n";
 		Cat b;
 		std::cout << "\n";
-		Cat c(a);
+		Cat c(*dynamic_cast<const Cat *>(a));
 		Cat d(b);
 		std::cout << "\n";
 

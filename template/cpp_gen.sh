@@ -161,10 +161,24 @@ EOF
 
 printf "\e[33;1m--- Class files Boiler Plate Generator ---\e[0m\n\n"
 ARG=$1
+shift
+declare -a ATTRIBUTES
+declare -a PRIV_ATTRIBUTES
 
 while [[ -z "$ARG" ]]; do
 	read -p "Enter class name : " ARG
 done
+
+while [[ -z "$ANS" ]]; do
+	IFS=' '
+	read -p "Enter attribute [type] : " ATTRIB
+	ATTRIBUTES+=(${ATTRIB})
+	read -p "Enter attribute [name] OR [_name] to make it private : " ATTRIB
+	ATTRIBUTES+=(${ATTRIB})
+	read -p "Enter 'end' to close the attribute list or press enter to add another attribute : " ANS
+done
+echo ATTRIBUTES_LIST ${ATTRIBUTES[@]}
+
 ARG=$(tr '[:lower:]' '[:upper:]' <<<${ARG:0:1})${ARG:1}
 gen_class_header $ARG
 gen_class_file $ARG

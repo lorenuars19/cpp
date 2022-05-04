@@ -19,7 +19,6 @@ function check_overwrite {
 }
 
 function gen_class_header {
-	CLASS_NAME=$1
 	HEADER_FILENAME="${INC_DIR}/${CLASS_NAME}${HEADER_EXT}"
 
 	check_overwrite $HEADER_FILENAME
@@ -29,7 +28,6 @@ function gen_class_header {
 
 	printf "\e[32;1m+++ Generating ${CLASS_NAME} Header -- $HEADER_FILENAME\e[0m\n"
 	mkdir -p $INC_DIR
-	UP_CLASS_NAME=$(echo "${CLASS_NAME}" | tr '[:lower:]' '[:upper:]')
 
 	cat >$HEADER_FILENAME <<EOF
 #ifndef ${UP_CLASS_NAME}_HPP
@@ -39,30 +37,29 @@ function gen_class_header {
 
 class ${CLASS_NAME}
 {
-	public:
+public:
+	${ATTS_PUBLIC}
 
-		${ATTS_PUBLIC}
 // ----------------------------- Constructors ------------------------------ //
-		${CLASS_NAME}( );	// Default Constructor
-		${CLASS_NAME}( ${ATTS_FIELD_CONST} );	// Fields Constructor
-		${CLASS_NAME}( const ${CLASS_NAME}& c );	// Copy Constructor
+	${CLASS_NAME}( );	// Default Constructor
+	${CLASS_NAME}( ${ATTS_CONSTR_ARGS} );	// Fields Constructor
+	${CLASS_NAME}( const ${CLASS_NAME}& c );	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
-		~${CLASS_NAME}( );	// Destructor
+	~${CLASS_NAME}( );	// Destructor
 
 // ------------------------------- Operators ------------------------------- //
-		${CLASS_NAME} & operator=( const t& a );
-		// Copy Assignement Operator
+	${CLASS_NAME} & operator=( const ${CLASS_NAME}& a );
+	// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
-		${ATTS_GETTER_SETTER}
+	${ATTS_GETTER_SETTER_DECL}
 
 // --------------------------------- Methods ------------------------------- //
-		int		is_equal( const ${CLASS_NAME} comp );
+	int		is_equal( const ${CLASS_NAME} comp );
 
 private:
-	int	var;
-	${ATTS_PUBLIC}
+	${ATTS_PRIV}
 
 };
 
@@ -72,7 +69,7 @@ private:
 #   define _ARG(arg) #arg << "(" << arg << ") "
 #  endif /* _ARG */
 
-#  define _${UP_CLASS_NAME}_ARGS _ARG(var)
+#  define _${UP_CLASS_NAME}_ARGS ${ATTS_MACRO}
 #  define _${UP_CLASS_NAME}_AUTO(COLOR_CODE, TEXT) \\
 	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \\
 			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \\
@@ -92,7 +89,6 @@ EOF
 }
 
 function gen_class_file {
-	CLASS_NAME=$1
 	class_filename=${SRC_DIR}/${CLASS_NAME}${CLASS_EXT}
 
 	check_overwrite $class_filename
@@ -102,7 +98,6 @@ function gen_class_file {
 
 	printf "\e[32;1m+++ Generating $CLASS_NAME Class -- $class_filename\e[0m\n"
 	mkdir -p $SRC_DIR
-	UP_CLASS_NAME=$(echo "${CLASS_NAME}" | tr '[:lower:]' '[:upper:]')
 
 	cat >$class_filename <<EOF
 #include "${CLASS_NAME}.hpp"
@@ -116,11 +111,11 @@ ${CLASS_NAME}::${CLASS_NAME}( )
 
 ${CLASS_NAME}::${CLASS_NAME}( const ${CLASS_NAME}& c )
 {
-	var = c.get_var();
 	_${UP_CLASS_NAME}_AUTO(32, "Copy Constructor");
+	${ATTS_COPY}
 }
 
-${CLASS_NAME}::${CLASS_NAME}( ${FIELD_CONSTRUCTOR_PARAMS} ) : var(input)
+${CLASS_NAME}::${CLASS_NAME}( ${ATTS_CONSTR_ARGS} ) : ${ATTS_CONSTR_ARGS_INIT}
 {
 	_${UP_CLASS_NAME}_AUTO(32, "Fields Constructor");
 }
@@ -134,28 +129,12 @@ ${CLASS_NAME}::~${CLASS_NAME}( )
 
 ${CLASS_NAME} & ${CLASS_NAME}::operator=( const ${CLASS_NAME}& c )
 {
-	var = c.get_var();
+	${ATTS_COPY}
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int	${CLASS_NAME}::get_var( ) const
-{
-	_${UP_CLASS_NAME}_AUTO(33, "Getter");
-	return var;
-}
-
-void	${CLASS_NAME}::set_var( int input )
-{
-	_${UP_CLASS_NAME}_AUTO(34, "Setter");
-#ifndef NO_DEBUG
-	std::cout << "\033[1D";
-#endif
-	std::cout <<" old(" << var << ") new(" << input << ") "<< std::endl;
-	var = input;
-}
-
-${ATTS_GETTER_SETTER}
+${ATTS_GETTER_SETTER_DEFS}
 
 // --------------------------------- Methods ------------------------------- //
 
@@ -176,8 +155,8 @@ declare -a ATTS
 while [[ -z "$ARG" ]]; do
 	read -p "Enter class name : " ARG
 done
-ARG=$(tr '[:lower:]' '[:upper:]' <<<${ARG:0:1})${ARG:1}
-
+CLASS_NAME=$(tr '[:lower:]' '[:upper:]' <<<${ARG:0:1})${ARG:1}
+UP_CLASS_NAME=$(echo "${CLASS_NAME}" | tr '[:lower:]' '[:upper:]')
 printf "\e[33;1m--- Attributes Definitions : \e[0m\n"
 ATT_CNT=0
 while [[ -z "$ANS" ]]; do
@@ -233,7 +212,7 @@ while [[ -z "$ANS" ]]; do
 		ATTRIB+=("PUBLIC")
 	fi
 
-	printf "\nATTRIB :\n [ Type '${ATTRIB[0]}' ] [ Name '${ATTRIB[1]}' ] [ Public/Private : '${ATTRIB[2]}' ] [ FULL : '${ATTRIB[*]}' ]\n\n"
+	printf "\nATTRIB : [ Type '${ATTRIB[0]}' ] [ Name '${ATTRIB[1]}' ] [ Public/Private : '${ATTRIB[2]}' ] [ FULL : '${ATTRIB[*]}' ]\n\n"
 
 	ATTS+=("${ATTRIB[@]}")
 	read -p "Type 'end' or press enter to add another attribute : " ANS
@@ -246,16 +225,52 @@ i=0
 ATT_CNT_RAW=$((${ATT_CNT} * 3))
 while [[ i -lt ${ATT_CNT_RAW} ]]; do
 	echo i $i
-	ATTS_FIELD_CONST+="${ATTS[$((i + 0))]} ${ATTS[$((i + 1))]}"
+	ATT_TYPE=${ATTS[$((i + 0))]}
+	ATT_NAME=${ATTS[$((i + 1))]}
+	ATT_VISIBILITY=${ATTS[$((i + 2))]}
+
+	ATTS_CONSTR_ARGS+="${ATT_TYPE} in_${ATT_NAME}"
+	ATTS_CONSTR_ARGS_INIT+="${ATT_NAME}(in_${ATT_NAME})"
+	ATTS_MACRO+="_ARG(${ATT_NAME})"
+
+	ATTS_COPY+="${ATT_NAME} = c.get_${ATT_NAME}();"
+
+	ATTS_GETTER_SETTER_DECL+="${ATT_TYPE} get_${ATT_NAME}() const;"$'\n'$'\t'
+	ATTS_GETTER_SETTER_DECL+="${ATT_TYPE} set_${ATT_NAME}(${ATT_TYPE} input);"$'\n'$'\t'
+
+	ATTS_GETTER_SETTER_DEFS+="${ATT_TYPE} ${CLASS_NAME}::get_${ATT_NAME}() const;{return ${ATT_NAME};}"$'\n'
+	ATTS_GETTER_SETTER_DEFS+="${ATT_TYPE} ${CLASS_NAME}::set_${ATT_NAME}(${ATT_TYPE} input);{${ATT_NAME} = input;}"$'\n'$'\n'
+
+	if [[ ${ATT_VISIBILITY} == "PRIVATE" ]]; then
+		ATTS_PRIV+="${ATT_TYPE} ${ATT_NAME};"
+	else
+		ATTS_PUBLIC+="${ATT_TYPE} ${ATT_NAME};"
+	fi
+
 	if [[ i -lt $((${ATT_CNT_RAW} - 3)) ]]; then
-		ATTS_FIELD_CONST+=", "
+		ATTS_CONSTR_ARGS+=", "
+		ATTS_GETTER_SETTER_DECL+=$'\n'$'\t'
+		ATTS_COPY+=$'\n'$'\t'
+		ATTS_CONSTR_ARGS_INIT+=", "
+		ATTS_MACRO+=" << "
+		if [[ ${ATT_VISIBILITY} == "PRIVATE" ]]; then
+			ATTS_PRIV+=$'\n'$'\t'
+		else
+			ATTS_PUBLIC+=$'\n'$'\t'
+		fi
+
 	fi
 	i=$((i + 3))
 done
 
-printf "\nATTS_FIELD_CONST '${ATTS_FIELD_CONST}'\n"
-
-exit 0
+printf "\n\nATTS_CONSTR_ARGS\n${CLASS_NAME}(${ATTS_CONSTR_ARGS})\n"
+printf "\n\nATTS_CONSTR_ARGS_INIT\n${ATTS_CONSTR_ARGS_INIT}'\n"
+printf "\n\nATTS_MACRO\n${ATTS_MACRO}\n"
+printf "\n\nATTS_COPY\n${ATTS_COPY}\n"
+printf "\n\nATTS_GETTER_SETTER_DECL\n${ATTS_GETTER_SETTER_DECL}\n"
+printf "\n\nATTS_GETTER_SETTER_DEFS\n${ATTS_GETTER_SETTER_DEFS}\n"
+printf "\n\nATTS_PRIV\n${ATTS_PRIV}\n"
+printf "\n\nATTS_PUBLIC\n${ATTS_PUBLIC}\n"
 
 gen_class_header $ARG
 gen_class_file $ARG

@@ -1,52 +1,84 @@
 #include "FortyTwo.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-FortyTwo::FortyTwo( )
+FortyTwo::FortyTwo()
 {
 	var = 0;
 	_FORTYTWO_AUTO(32, "Default Constructor");
 }
 
-FortyTwo::FortyTwo( const t& c )
+FortyTwo::FortyTwo(const FortyTwo &c)
 {
-	var = c.get_var();
 	_FORTYTWO_AUTO(32, "Copy Constructor");
+	name = c.get_name;
+	firstName = c.get_firstName;
+	lastName = c.get_lastName;
+	middleName = c.get_middleName;
+	flag = c.get_flag;
 }
 
-FortyTwo::FortyTwo( int input ) : var(input)
+FortyTwo::FortyTwo(std::string in_name, std::string in_firstName, std::string in_lastName, std::string in_middleName, int in_flag) : name(in_name), firstName(in_firstName), lastName(in_lastName), middleName(in_middleName), flag(in_flag)
 {
 	_FORTYTWO_AUTO(32, "Fields Constructor");
 }
 
 // ------------------------------ Destructor ------------------------------- //
-FortyTwo::~FortyTwo( )
+FortyTwo::~FortyTwo()
 {
 	_FORTYTWO_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //
 
-FortyTwo & FortyTwo::operator=( const t& a )
+FortyTwo &FortyTwo::operator=(const FortyTwo &c)
 {
-	var = a.get_var();
+	name = c.get_name;
+	firstName = c.get_firstName;
+	lastName = c.get_lastName;
+	middleName = c.get_middleName;
+	flag = c.get_flag;
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-int	FortyTwo::get_var( ) const
+std::string FortyTwo::get_name() const;
 {
-	_FORTYTWO_AUTO(33, "Getter");
-	return var;
+	return name;
 }
-
-void	FortyTwo::set_var( int input )
+std::string FortyTwo::set_name(std::string input);
 {
-	_FORTYTWO_AUTO(34, "Setter");
-#ifndef NO_DEBUG
-	std::cout << "\033[1D";
-#endif
-	std::cout <<" old(" << var << ") new(" << input << ") "<< std::endl;
-	var = input;
+	name = input;
+}
+std::string FortyTwo::get_firstName() const;
+{
+	return firstName;
+}
+std::string FortyTwo::set_firstName(std::string input);
+{
+	firstName = input;
+}
+std::string FortyTwo::get_lastName() const;
+{
+	return lastName;
+}
+std::string FortyTwo::set_lastName(std::string input);
+{
+	lastName = input;
+}
+std::string FortyTwo::get_middleName() const;
+{
+	return middleName;
+}
+std::string FortyTwo::set_middleName(std::string input);
+{
+	middleName = input;
+}
+int FortyTwo::get_flag() const;
+{
+	return flag;
+}
+int FortyTwo::set_flag(int input);
+{
+	flag = input;
 }
 
 // --------------------------------- Methods ------------------------------- //
-

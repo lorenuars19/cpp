@@ -40,11 +40,12 @@ function gen_class_header {
 class ${CLASS_NAME}
 {
 	public:
-		typedef	${CLASS_NAME} t;
+
+		${ATTS_PUBLIC}
 // ----------------------------- Constructors ------------------------------ //
 		${CLASS_NAME}( );	// Default Constructor
-		${CLASS_NAME}( int var );	// Fields Constructor
-		${CLASS_NAME}( const t& c );	// Copy Constructor
+		${CLASS_NAME}( ${ATTS_FIELD_CONST} );	// Fields Constructor
+		${CLASS_NAME}( const ${CLASS_NAME}& c );	// Copy Constructor
 
 // ------------------------------ Destructor ------------------------------- //
 		~${CLASS_NAME}( );	// Destructor
@@ -54,14 +55,14 @@ class ${CLASS_NAME}
 		// Copy Assignement Operator
 
 // --------------------------- Getters && Setters -------------------------- //
-		int		get_var( ) const;
-		void	set_var( int input );
+		${ATTS_GETTER_SETTER}
 
 // --------------------------------- Methods ------------------------------- //
 		int		is_equal( const ${CLASS_NAME} comp );
 
 private:
 	int	var;
+	${ATTS_PUBLIC}
 
 };
 
@@ -113,13 +114,13 @@ ${CLASS_NAME}::${CLASS_NAME}( )
 	_${UP_CLASS_NAME}_AUTO(32, "Default Constructor");
 }
 
-${CLASS_NAME}::${CLASS_NAME}( const t& c )
+${CLASS_NAME}::${CLASS_NAME}( const ${CLASS_NAME}& c )
 {
 	var = c.get_var();
 	_${UP_CLASS_NAME}_AUTO(32, "Copy Constructor");
 }
 
-${CLASS_NAME}::${CLASS_NAME}( int input ) : var(input)
+${CLASS_NAME}::${CLASS_NAME}( ${FIELD_CONSTRUCTOR_PARAMS} ) : var(input)
 {
 	_${UP_CLASS_NAME}_AUTO(32, "Fields Constructor");
 }
@@ -131,9 +132,9 @@ ${CLASS_NAME}::~${CLASS_NAME}( )
 }
 // ------------------------------- Operators ------------------------------- //
 
-${CLASS_NAME} & ${CLASS_NAME}::operator=( const t& a )
+${CLASS_NAME} & ${CLASS_NAME}::operator=( const ${CLASS_NAME}& c )
 {
-	var = a.get_var();
+	var = c.get_var();
 	return *this;
 }
 
@@ -154,6 +155,8 @@ void	${CLASS_NAME}::set_var( int input )
 	var = input;
 }
 
+${ATTS_GETTER_SETTER}
+
 // --------------------------------- Methods ------------------------------- //
 
 EOF
@@ -162,23 +165,97 @@ EOF
 printf "\e[33;1m--- Class files Boiler Plate Generator ---\e[0m\n\n"
 ARG=$1
 shift
-declare -a ATTRIBUTES
-declare -a PRIV_ATTRIBUTES
+
+declare -a ATTS_TYP
+declare -a ATTS_NAM
+declare -a PR_ATTS_TYP
+declare -a PR_ATTS_NAM
+declare -a ATTRIB
+declare -a ATTS
 
 while [[ -z "$ARG" ]]; do
 	read -p "Enter class name : " ARG
 done
+ARG=$(tr '[:lower:]' '[:upper:]' <<<${ARG:0:1})${ARG:1}
 
+printf "\e[33;1m--- Attributes Definitions : \e[0m\n"
+ATT_CNT=0
 while [[ -z "$ANS" ]]; do
 	IFS=' '
-	read -p "Enter attribute [type] : " ATTRIB
-	ATTRIBUTES+=(${ATTRIB})
-	read -p "Enter attribute [name] OR [_name] to make it private : " ATTRIB
-	ATTRIBUTES+=(${ATTRIB})
-	read -p "Enter 'end' to close the attribute list or press enter to add another attribute : " ANS
-done
-echo ATTRIBUTES_LIST ${ATTRIBUTES[@]}
+	ATTRIB=()
+	ATT_TYP=
+	ATT_NAM=
+	printf "Enter Attribute [${ATT_CNT}] :\n"
+	printf " Common types : (b)ool (c)har (i)nt (ui)nt (l)ong (ul)ong (s)tring (f)loat (d)ouble \n"
+	while [[ -z "$ATT_TYP" ]]; do
+		read -p " Type : " ATT_TYP
+	done
 
-ARG=$(tr '[:lower:]' '[:upper:]' <<<${ARG:0:1})${ARG:1}
+	if [[ "$ATT_TYP" == 'b' ]]; then
+		ATT_TYP='bool'
+	fi
+	if [[ "$ATT_TYP" == 'c' ]]; then
+		ATT_TYP='char'
+	fi
+	if [[ "$ATT_TYP" == 'i' ]]; then
+		ATT_TYP='int'
+	fi
+	if [[ "$ATT_TYP" == 'ui' ]]; then
+		ATT_TYP='unsigned int'
+	fi
+	if [[ "$ATT_TYP" == 'l' ]]; then
+		ATT_TYP='long'
+	fi
+	if [[ "$ATT_TYP" == 'ul' ]]; then
+		ATT_TYP='unsigned long'
+	fi
+	if [[ "$ATT_TYP" == 's' ]]; then
+		ATT_TYP='std::string'
+	fi
+	if [[ "$ATT_TYP" == 'f' ]]; then
+		ATT_TYP='float'
+	fi
+	if [[ "$ATT_TYP" == 'd' ]]; then
+		ATT_TYP='double'
+	fi
+
+	ATTRIB+=("${ATT_TYP}")
+
+	while [[ -z "${ATT_NAM}" ]]; do
+		read -p " Name : " ATT_NAM
+	done
+	ATTRIB+=("${ATT_NAM}")
+
+	read -p " Type 'p' to make public or press enter for private attribute : " PRIVATE
+	if [[ -z "${PRIVATE}" ]]; then
+		ATTRIB+=("PRIVATE")
+	else
+		ATTRIB+=("PUBLIC")
+	fi
+
+	printf "\nATTRIB :\n [ Type '${ATTRIB[0]}' ] [ Name '${ATTRIB[1]}' ] [ Public/Private : '${ATTRIB[2]}' ] [ FULL : '${ATTRIB[*]}' ]\n\n"
+
+	ATTS+=("${ATTRIB[@]}")
+	read -p "Type 'end' or press enter to add another attribute : " ANS
+	ATT_CNT=$((ATT_CNT + 1))
+done
+
+echo "ATTS '${ATTS[@]}' ATT_CNT ${ATT_CNT} >> $((${ATT_CNT} * 3))"
+
+i=0
+ATT_CNT_RAW=$((${ATT_CNT} * 3))
+while [[ i -lt ${ATT_CNT_RAW} ]]; do
+	echo i $i
+	ATTS_FIELD_CONST+="${ATTS[$((i + 0))]} ${ATTS[$((i + 1))]}"
+	if [[ i -lt $((${ATT_CNT_RAW} - 1)) ]]; then
+		ATTS_FIELD_CONST+=", "
+	fi
+	i=$((i + 3))
+done
+
+printf "\nATTS_FIELD_CONST '${ATTS_FIELD_CONST}'\n"
+
+exit 0
+
 gen_class_header $ARG
 gen_class_file $ARG

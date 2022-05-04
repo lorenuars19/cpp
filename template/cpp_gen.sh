@@ -247,7 +247,7 @@ ATT_CNT_RAW=$((${ATT_CNT} * 3))
 while [[ i -lt ${ATT_CNT_RAW} ]]; do
 	echo i $i
 	ATTS_FIELD_CONST+="${ATTS[$((i + 0))]} ${ATTS[$((i + 1))]}"
-	if [[ i -lt $((${ATT_CNT_RAW} - 1)) ]]; then
+	if [[ i -lt $((${ATT_CNT_RAW} - 3)) ]]; then
 		ATTS_FIELD_CONST+=", "
 	fi
 	i=$((i + 3))

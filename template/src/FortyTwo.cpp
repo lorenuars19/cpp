@@ -3,21 +3,17 @@
 // ----------------------------- Constructors ------------------------------ //
 FortyTwo::FortyTwo()
 {
-	var = 0;
 	_FORTYTWO_AUTO(32, "Default Constructor");
 }
 
 FortyTwo::FortyTwo(const FortyTwo &c)
 {
 	_FORTYTWO_AUTO(32, "Copy Constructor");
-	name = c.get_name;
-	firstName = c.get_firstName;
-	lastName = c.get_lastName;
-	middleName = c.get_middleName;
-	flag = c.get_flag;
+	var = c.get_var();
+	prec = c.get_prec();
 }
 
-FortyTwo::FortyTwo(std::string in_name, std::string in_firstName, std::string in_lastName, std::string in_middleName, int in_flag) : name(in_name), firstName(in_firstName), lastName(in_lastName), middleName(in_middleName), flag(in_flag)
+FortyTwo::FortyTwo(int in_var, float in_prec) : var(in_var), prec(in_prec)
 {
 	_FORTYTWO_AUTO(32, "Fields Constructor");
 }
@@ -31,54 +27,16 @@ FortyTwo::~FortyTwo()
 
 FortyTwo &FortyTwo::operator=(const FortyTwo &c)
 {
-	name = c.get_name;
-	firstName = c.get_firstName;
-	lastName = c.get_lastName;
-	middleName = c.get_middleName;
-	flag = c.get_flag;
+	var = c.get_var();
+	prec = c.get_prec();
 	return *this;
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string FortyTwo::get_name() const;
-{
-	return name;
-}
-std::string FortyTwo::set_name(std::string input);
-{
-	name = input;
-}
-std::string FortyTwo::get_firstName() const;
-{
-	return firstName;
-}
-std::string FortyTwo::set_firstName(std::string input);
-{
-	firstName = input;
-}
-std::string FortyTwo::get_lastName() const;
-{
-	return lastName;
-}
-std::string FortyTwo::set_lastName(std::string input);
-{
-	lastName = input;
-}
-std::string FortyTwo::get_middleName() const;
-{
-	return middleName;
-}
-std::string FortyTwo::set_middleName(std::string input);
-{
-	middleName = input;
-}
-int FortyTwo::get_flag() const;
-{
-	return flag;
-}
-int FortyTwo::set_flag(int input);
-{
-	flag = input;
-}
+int FortyTwo::get_var() const { return var; }
+int FortyTwo::set_var(int input) { var = input; }
+
+float FortyTwo::get_prec() const { return prec; }
+float FortyTwo::set_prec(float input) { prec = input; }
 
 // --------------------------------- Methods ------------------------------- //

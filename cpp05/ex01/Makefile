@@ -21,10 +21,12 @@ SHELL := bash
 
 SRCS := \
 	./src/Bureaucrat.cpp \
+	./src/Form.cpp \
 	./src/main.cpp \
 
 HEADERS := \
 	./includes/Bureaucrat.hpp\
+	./includes/Form.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

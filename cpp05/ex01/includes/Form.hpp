@@ -1,15 +1,12 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
-#define MIN_GRADE 1
-#define MAX_GRADE 150
+class Bureaucrat;
 
-class Form;
-
-class Bureaucrat
+class Form
 {
 public:
 	struct GradeTooHighException : public std::exception
@@ -27,35 +24,42 @@ public:
 		}
 	};
 	// ----------------------------- Constructors ------------------------------ //
-	Bureaucrat();										 // Default Constructor
-	Bureaucrat(const std::string in_name, int in_grade); // Fields Constructor
-	Bureaucrat(const Bureaucrat &c);					 // Copy Constructor
+	Form();																   // Default Constructor
+	Form(const std::string in_name, int in_sign_grade, int in_exec_grade); // Fields Constructor
+	Form(const Form &c);												   // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Bureaucrat(); // Destructor
+	~Form(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
-	Bureaucrat &operator=(const Bureaucrat &a);
+	Form &operator=(const Form &a);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
 	const std::string get_name() const;
 	void set_name(const std::string input);
 
-	int get_grade() const;
-	void set_grade(int input);
-	void increment_grade();
-	void decrement_grade();
+	bool get_form_signed() const;
+	void set_form_signed(bool input);
+
+	int get_sign_grade() const;
+	void set_sign_grade(const int input);
+
+	int get_exec_grade() const;
+	void set_exec_grade(const int input);
 
 	// --------------------------------- Methods ------------------------------- //
-	void signForm(Form &inp);
+	void check_grade(int grade);
+	void beSigned(Bureaucrat &inp);
 
 private:
 	const std::string name;
-	int grade;
+	bool form_signed;
+	const int sign_grade;
+	const int exec_grade;
 };
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &input);
+std::ostream &operator<<(std::ostream &o, const Form &input);
 
 #ifndef NO_DEBUG
 
@@ -63,19 +67,19 @@ std::ostream &operator<<(std::ostream &o, const Bureaucrat &input);
 #define _ARG(arg) #arg << "(" << arg << ") "
 #endif /* _ARG */
 
-#define _BUREAUCRAT_ARGS _ARG(name) << _ARG(grade)
-#define _BUREAUCRAT_AUTO(COLOR_CODE, TEXT)                      \
+#define _FORM_ARGS _ARG(name) << _ARG(form_signed) << _ARG(sign_grade) << _ARG(exec_grade)
+#define _FORM_AUTO(COLOR_CODE, TEXT)                            \
 	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \
 			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \
 			  << "[\033[34;47m" << this                         \
-			  << "\033[0m]\033[0m: " << _BUREAUCRAT_ARGS        \
+			  << "\033[0m]\033[0m: " << _FORM_ARGS              \
 			  << "}" << std::endl;
 #else
 
-#define _BUREAUCRAT_AUTO(x, y) ;
-#define _BUREAUCRAT_ARGS ""
+#define _FORM_AUTO(x, y) ;
+#define _FORM_ARGS ""
 #define _ARG ""
 
 #endif /* NO_DEBUG */
 
-#endif /* BUREAUCRAT_HPP */
+#endif /* FORM_HPP */

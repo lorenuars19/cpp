@@ -64,3 +64,18 @@ void Bureaucrat::increment_grade() { set_grade(grade - 1); }
 void Bureaucrat::decrement_grade() { set_grade(grade + 1); }
 
 // --------------------------------- Methods ------------------------------- //
+
+void Bureaucrat::signForm(Form &inp)
+{
+	try
+	{
+		inp.beSigned(*this);
+		std::cout << this->get_name() << " signed " << inp.get_name() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->get_name() << " couldn't sign "
+				  << inp.get_name() << " because " << e.what()
+				  << std::endl;
+	}
+}

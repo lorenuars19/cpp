@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
@@ -34,6 +35,35 @@ int main(void)
 	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		Form form("Form", 42, 42);
+		Form form2("Form2", 42, 42);
+		Bureaucrat bob("Bob", 42);
+
+		std::cout << form << '\n'
+				  << bob << '\n';
+
+		bob.signForm(form);
+		std::cout << form << '\n'
+				  << bob << '\n';
+		bob.signForm(form);
+		std::cout << form << '\n'
+				  << bob << '\n';
+		bob.decrement_grade();
+		std::cout << form << '\n'
+				  << bob << '\n';
+		std::cout << form2 << '\n'
+				  << bob << '\n';
+		bob.signForm(form2);
+		std::cout << form2 << '\n'
+				  << bob << '\n';
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 
 	return (0);

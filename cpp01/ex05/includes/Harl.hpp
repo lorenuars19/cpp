@@ -3,23 +3,22 @@
 
 #include <iostream>
 
-class Karen
+class Harl
 {
 public:
-	typedef Karen t;
+	typedef Harl t;
 
-	typedef void (Karen::*ptr_func)();
+	typedef void (Harl::*ptr_func)();
 
 	// ----------------------------- Constructors ------------------------------ //
-	Karen(); // Default Constructor
-	// Karen( int var );	// Fields Constructor
-	Karen(const t &c); // Copy Constructor
+	Harl();			  // Default Constructor
+	Harl(const t &c); // Copy Constructor
 
 	// ------------------------------ Destructor ------------------------------- //
-	~Karen(); // Destructor
+	~Harl(); // Destructor
 
 	// ------------------------------- Operators ------------------------------- //
-	Karen &operator=(const t &a);
+	Harl &operator=(const t &a);
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //

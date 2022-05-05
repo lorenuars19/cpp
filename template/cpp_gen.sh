@@ -202,7 +202,7 @@ function gen_attributes {
 			ATTRIB+=("PUBLIC")
 		fi
 
-		printf "Attribute : [ Type '${ATTRIB[0]}' ] [ Name '${ATTRIB[1]}' ] [ Public/Private : '${ATTRIB[2]}' ]"
+		printf "Attribute : [ Type '${ATTRIB[0]}' ] [ Name '${ATTRIB[1]}' ] [ Public/Private : '${ATTRIB[2]}' ]\n"
 
 		ATTS+=("${ATTRIB[@]}")
 		read -p "Type 'end' or press enter to add another attribute : " ANS

@@ -20,7 +20,7 @@ public:
 	// Copy Assignement Operator
 
 	// --------------------------- Getters && Setters -------------------------- //
-	std::string getType() const;
+	const std::string getType() const;
 	void setType(std::string input);
 
 	// --------------------------------- Methods ------------------------------- //

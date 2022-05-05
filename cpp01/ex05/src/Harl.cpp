@@ -1,31 +1,19 @@
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 // ----------------------------- Constructors ------------------------------ //
-Karen::Karen()
+Harl::Harl()
 {
 }
 
-Karen::Karen(const t &c)
-{
-	// _var = c.get_var();
-	() c;
-}
-
-// Karen::Karen( int var ) : _var(var)
-// {
-// 	_KAREN_AUTO(32, "Fields Constructor");
-// }
+Harl::Harl(const t &c) { (void)c; }
 
 // ------------------------------ Destructor ------------------------------- //
-Karen::~Karen()
-{
-}
+Harl::~Harl() {}
 // ------------------------------- Operators ------------------------------- //
 
-Karen &Karen::operator=(const t &a)
+Harl &Harl::operator=(const t &a)
 {
-	// _var = a.get_var();
-	() a;
+	(void)a;
 	return *this;
 }
 
@@ -33,13 +21,13 @@ Karen &Karen::operator=(const t &a)
 
 // --------------------------------- Methods ------------------------------- //
 
-void Karen::complain(std::string level)
+void Harl::complain(std::string level)
 {
 	ptr_func funcs[4] = {
-		&Karen::debug,
-		&Karen::info,
-		&Karen::warning,
-		&Karen::error};
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error};
 
 	std::string levels[4] = {
 		"DEBUG",
@@ -62,25 +50,25 @@ void Karen::complain(std::string level)
 	}
 }
 
-void Karen::debug()
+void Harl::debug()
 {
 	std::cout << "\e[95m[DEBUG] I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger." << std::endl
 			  << "I really do !"
 			  << "\e[0m" << std::endl;
 }
-void Karen::info()
+void Harl::info()
 {
 	std::cout << "\e[94m[INFO] I cannot believe adding extra bacon costs more money." << std::endl
 			  << "You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
 			  << "\e[0m" << std::endl;
 }
-void Karen::warning()
+void Harl::warning()
 {
 	std::cout << "\e[93m[WARNING] I think I deserve to have some extra bacon for free." << std::endl
 			  << "I’ve been coming for years whereas you started working here since last month."
 			  << "\e[0m" << std::endl;
 }
-void Karen::error()
+void Harl::error()
 {
 	std::cout << "\e[91m[ERROR] This is unacceptable!" << std::endl
 			  << "I want to speak to the manager now."

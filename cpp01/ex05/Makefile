@@ -20,11 +20,11 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/Karen.cpp \
+	./src/Harl.cpp \
 	./src/main.cpp \
 
 HEADERS := \
-	./includes/Karen.hpp\
+	./includes/Harl.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

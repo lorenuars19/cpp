@@ -43,27 +43,20 @@ int main(void)
 		Form form2("Form2", 42, 42);
 		Bureaucrat bob("Bob", 42);
 
-		std::cout << form << '\n'
-				  << bob << '\n';
+		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
 
 		bob.signForm(form);
-		std::cout << form << '\n'
-				  << bob << '\n';
 		bob.signForm(form);
-		std::cout << form << '\n'
-				  << bob << '\n';
+		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
 		bob.decrement_grade();
-		std::cout << form << '\n'
-				  << bob << '\n';
-		std::cout << form2 << '\n'
-				  << bob << '\n';
+		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
+		std::cout << "Form: " << form2 << " Bureaucrat: " << bob << std::endl;
 		bob.signForm(form2);
-		std::cout << form2 << '\n'
-				  << bob << '\n';
+		std::cout << "Form: " << form2 << " Bureaucrat: " << bob << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what();
 	}
 
 	return (0);

@@ -16,14 +16,14 @@ public:
 	{
 		const char *what() const throw()
 		{
-			return "Error : grade too high";
+			return "\e[31;1mError : grade too high\e[0m";
 		}
 	};
 	struct GradeTooLowException : public std::exception
 	{
 		const char *what() const throw()
 		{
-			return "Error : grade too low";
+			return "\e[31;1mError : grade too low\e[0m";
 		}
 	};
 	// ----------------------------- Constructors ------------------------------ //

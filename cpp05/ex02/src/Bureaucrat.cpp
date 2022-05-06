@@ -65,17 +65,32 @@ void Bureaucrat::decrement_grade() { set_grade(grade + 1); }
 
 // --------------------------------- Methods ------------------------------- //
 
-void Bureaucrat::signForm(Form &inp)
+void Bureaucrat::signForm(Form &form)
 {
 	try
 	{
-		inp.beSigned(*this);
-		std::cout << this->get_name() << " signed " << inp.get_name() << std::endl;
+		form.beSigned(*this);
+		std::cout << this->get_name() << " signed " << form.get_name() << std::endl;
 	}
 	catch (const std::exception &e)
 	{
 		std::cout << this->get_name() << " couldn't sign "
-				  << inp.get_name() << " because " << e.what()
+				  << form.get_name() << " because " << e.what()
+				  << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->get_name() << " executed " << form.get_name() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->get_name() << " couldn't execute "
+				  << form.get_name() << " because " << e.what()
 				  << std::endl;
 	}
 }

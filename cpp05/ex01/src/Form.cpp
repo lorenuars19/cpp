@@ -45,7 +45,7 @@ std::ostream &operator<<(std::ostream &o, const Form &inp)
 	return o << inp.get_name()
 			 << ", form_signed " << inp.get_form_signed()
 			 << ", form sign grade " << inp.get_sign_grade()
-			 << ", form exec grade" << inp.get_exec_grade();
+			 << ", form exec grade " << inp.get_exec_grade();
 }
 
 // --------------------------- Getters && Setters -------------------------- //

@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void)
 {
@@ -39,17 +42,17 @@ int main(void)
 
 	try
 	{
-		Form form("Form", 42, 42);
-		Bureaucrat bob("Bob", 42);
+		ShrubberyCreationForm form("Magratea");
+		Bureaucrat bob("Bob", 145);
 
 		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
 
 		bob.signForm(form);
 		bob.signForm(form);
-		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
+		std::cout << " Bureaucrat: " << bob << std::endl;
 		bob.decrement_grade();
-		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
-		bob.signForm(form);
+		std::cout << " Bureaucrat: " << bob << std::endl;
+		bob.executeForm(form);
 	}
 	catch (const std::exception &e)
 	{

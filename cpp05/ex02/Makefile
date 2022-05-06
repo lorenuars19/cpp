@@ -23,10 +23,16 @@ SRCS := \
 	./src/Bureaucrat.cpp \
 	./src/Form.cpp \
 	./src/main.cpp \
+	./src/PresidentialPardonForm.cpp \
+	./src/RobotomyRequestForm.cpp \
+	./src/ShrubberyCreationForm.cpp \
 
 HEADERS := \
 	./includes/Bureaucrat.hpp\
 	./includes/Form.hpp\
+	./includes/PresidentialPardonForm.hpp\
+	./includes/RobotomyRequestForm.hpp\
+	./includes/ShrubberyCreationForm.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

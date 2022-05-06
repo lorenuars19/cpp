@@ -48,7 +48,8 @@ public:
 	void decrement_grade();
 
 	// --------------------------------- Methods ------------------------------- //
-	void signForm(Form &inp);
+	void signForm(Form &form);
+	void executeForm(Form const &form);
 
 private:
 	const std::string name;

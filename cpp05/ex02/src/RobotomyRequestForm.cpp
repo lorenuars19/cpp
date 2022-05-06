@@ -13,7 +13,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &c)
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string in_target)
-	: Form(), target(in_target)
+	: Form("RobotomyRequestForm", 72, 45), target(in_target)
 {
 	_ROBOTOMYCREATIONFORM_AUTO(32, "Fields Constructor");
 }
@@ -39,23 +39,25 @@ void RobotomyRequestForm::set_target(std::string input) { target = input; }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	static bool fail = false;
 	if (this->get_form_signed() == false)
 	{
 		throw FormNotSignedExeption();
 	}
-	if (this->get_exec_grade() <= executor.get_grade())
+	if (this->get_exec_grade() < executor.get_grade())
 	{
 		throw GradeTooLowException();
 	}
 
-	std::cout << " * drilling noises * " << '\n';
+	std::cout << " * drilling noises * ";
 
-	if (rand() % 2 == 1)
+	if (!fail)
 	{
 		std::cout << target << " has been succesfully robotomized " << std::endl;
 	}
 	else
 	{
-		std::cout << " robotomy has failed for " << target << std::endl;
+		std::cout << "/!\\ Robotomy has failed for " << target << " /!\\" << std::endl;
 	}
+	fail = !fail;
 }

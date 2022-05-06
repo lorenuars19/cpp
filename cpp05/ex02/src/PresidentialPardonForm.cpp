@@ -45,7 +45,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 		throw FormNotSignedExeption();
 	}
 
-	if (this->get_exec_grade() <= executor.get_grade())
+	if (this->get_exec_grade() < executor.get_grade())
 	{
 		throw GradeTooLowException();
 	}

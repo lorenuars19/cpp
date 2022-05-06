@@ -40,23 +40,56 @@ int main(void)
 		std::cerr << e.what() << std::endl;
 	}
 
-	try
 	{
 		ShrubberyCreationForm form("Magratea");
 		Bureaucrat bob("Bob", 145);
 
-		std::cout << "Form: " << form << " Bureaucrat: " << bob << std::endl;
+		std::cout << "Form: " << form << "\nBureaucrat: " << bob << std::endl;
 
 		bob.signForm(form);
-		bob.signForm(form);
-		std::cout << " Bureaucrat: " << bob << std::endl;
+		for (int i = 0; i < 8; i++)
+		{
+			bob.increment_grade();
+		}
+		std::cout << "Bureaucrat: " << bob << std::endl;
+		bob.executeForm(form);
 		bob.decrement_grade();
-		std::cout << " Bureaucrat: " << bob << std::endl;
 		bob.executeForm(form);
 	}
-	catch (const std::exception &e)
+
 	{
-		std::cerr << e.what();
+		RobotomyRequestForm form("Bender");
+		Bureaucrat bob("Bob", 72);
+
+		bob.signForm(form);
+		for (int i = 0; i < 27; i++)
+		{
+			bob.increment_grade();
+		}
+		std::cout << "Bureaucrat: " << bob << std::endl;
+		for (int i = 0; i < 5; i++)
+		{
+			bob.executeForm(form);
+		}
+		bob.decrement_grade();
+		bob.executeForm(form);
+	}
+
+	{
+		PresidentialPardonForm form("Alice");
+		Bureaucrat bob("Bob", 25);
+
+		std::cout << "Form: " << form << "\nBureaucrat: " << bob << std::endl;
+
+		bob.signForm(form);
+		for (int i = 0; i < 20; i++)
+		{
+			bob.increment_grade();
+		}
+		std::cout << "Bureaucrat: " << bob << std::endl;
+		bob.executeForm(form);
+		bob.decrement_grade();
+		bob.executeForm(form);
 	}
 
 	return (0);

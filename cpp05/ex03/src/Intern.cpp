@@ -29,33 +29,41 @@ Intern &Intern::operator=(const Intern &c)
 
 // --------------------------------- Methods ------------------------------- //
 
-Form *makeShrubberyCreationForm(std::string form_target) { return new ShrubberyCreationForm(form_target); }
-Form *makeRobotomyRequestForm(std::string form_target) { return new RobotomyRequestForm(form_target); }
-Form *makePresidentialPardonForm(std::string form_target) { return new PresidentialPardonForm(form_target); }
+Form *Intern::makeShrubberyCreationForm(std::string form_target) { return new ShrubberyCreationForm(form_target); }
+Form *Intern::makeRobotomyRequestForm(std::string form_target) { return new RobotomyRequestForm(form_target); }
+Form *Intern::makePresidentialPardonForm(std::string form_target) { return new PresidentialPardonForm(form_target); }
 
 Form *Intern::makeForm(std::string form_name, std::string form_target)
 {
-	Form *ret;
+	Form *form;
 
-	static Form(*form_factories[CLASS_MAX]) = {
-		Intern::makeShrubberyCreationForm,
-		Intern::makeRobotomyRequestForm,
-		Intern::makePresidentialPardonForm};
+	static t_factory form_factories[CLASS_MAX] = {
+		&Intern::makeShrubberyCreationForm,
+		&Intern::makeRobotomyRequestForm,
+		&Intern::makePresidentialPardonForm};
 
-	const static std::string strs[CLASS_MAX]{
-		"shubbery creation",
+	const static std::string strs[CLASS_MAX] = {
+		"shrubbery creation",
 		"robotomy request",
 		"presidential pardon"};
 
 	// Check String Array
 	// lowercase it so the case does not matter
+	form = NULL;
 	for (int i = 0; i < CLASS_MAX; i++)
 	{
 		if (form_name == strs[i])
 		{
-			ret = form_factories[i](form_target);
+			form = (this->*(form_factories[i]))(form_target);
 		}
 	}
 
-	return ret;
+	if (form == NULL)
+	{
+		std::cout << "Intern could not find this form name, make sure it exists in the database" << std::endl;
+		return NULL;
+	}
+	std::cout << "Intern creates " << *form << std::endl;
+
+	return form;
 }

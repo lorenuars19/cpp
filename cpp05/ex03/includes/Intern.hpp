@@ -35,6 +35,8 @@ private:
 	Form *makePresidentialPardonForm(std::string form_target);
 };
 
+typedef Form *(Intern::*t_factory)(std::string);
+
 #ifndef NO_DEBUG
 
 #ifndef _ARG

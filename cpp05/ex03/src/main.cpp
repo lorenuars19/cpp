@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -92,5 +93,34 @@ int main(void)
 		bob.executeForm(form);
 	}
 
+	{
+		Bureaucrat sudo("sudo", 1);
+		Intern i;
+		Form *form;
+
+		form = i.makeForm("shrubbery creation", "magratea");
+		if (form)
+		{
+			sudo.signForm(*form);
+			sudo.executeForm(*form);
+		}
+		delete form;
+
+		form = i.makeForm("robotomy request", "Marvin");
+		if (form)
+		{
+			sudo.signForm(*form);
+			sudo.executeForm(*form);
+		}
+		delete form;
+
+		form = i.makeForm("presidential pardon", "George");
+		if (form)
+		{
+			sudo.signForm(*form);
+			sudo.executeForm(*form);
+		}
+		delete form;
+	}
 	return (0);
 }

@@ -20,18 +20,20 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/Bureaucrat.cpp \
+	./src/RobotomyRequestForm.cpp \
+	./src/PresidentialPardonForm.cpp \
+	./src/Intern.cpp \
 	./src/Form.cpp \
 	./src/main.cpp \
-	./src/PresidentialPardonForm.cpp \
-	./src/RobotomyRequestForm.cpp \
+	./src/Bureaucrat.cpp \
 	./src/ShrubberyCreationForm.cpp \
 
 HEADERS := \
 	./includes/Bureaucrat.hpp\
 	./includes/Form.hpp\
-	./includes/PresidentialPardonForm.hpp\
 	./includes/RobotomyRequestForm.hpp\
+	./includes/PresidentialPardonForm.hpp\
+	./includes/Intern.hpp\
 	./includes/ShrubberyCreationForm.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
@@ -59,6 +61,7 @@ $(BIN_DIR)/%.o: %.$(SRC_EXT) $(HEADERS) | $(BIN_DIR)
 clean:
 	@printf "\e[31;1m--- $(OBJS)\e[0m\n"
 	@rm -rf $(BIN_DIR)
+	rm -f *_shrubbery
 
 fclean: clean
 	@printf "\e[31;1m--- $(NAME)\e[0m\n"

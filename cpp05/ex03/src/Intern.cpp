@@ -38,10 +38,9 @@ Form *Intern::makeForm(std::string form_name, std::string form_target)
 	Form *ret;
 
 	static Form(*form_factories[CLASS_MAX]) = {
-		&Intern::makeShrubberyCreationForm,
-		&Intern::makeRobotomyRequestForm,
-		&Intern::makePresidentialPardonForm,
-	};
+		Intern::makeShrubberyCreationForm,
+		Intern::makeRobotomyRequestForm,
+		Intern::makePresidentialPardonForm};
 
 	const static std::string strs[CLASS_MAX]{
 		"shubbery creation",

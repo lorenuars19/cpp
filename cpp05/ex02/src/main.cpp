@@ -58,7 +58,7 @@ int main(void)
 	}
 
 	{
-		RobotomyRequestForm form("Bender");
+		RobotomyRequestForm form("mee6");
 		Bureaucrat bob("Bob", 72);
 
 		bob.signForm(form);

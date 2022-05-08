@@ -7,9 +7,9 @@ RobotomyRequestForm::RobotomyRequestForm()
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &c)
+	: Form(c.get_name(), c.get_sign_grade(), c.get_exec_grade()), target(c.get_target())
 {
 	_ROBOTOMYCREATIONFORM_AUTO(32, "Copy Constructor");
-	target = c.get_target();
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string in_target)

@@ -7,9 +7,10 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &c)
+	: Form(c.get_name(), c.get_sign_grade(), c.get_exec_grade()), target(c.get_target())
+
 {
 	_SHRUBBERYCREATIONFORM_AUTO(32, "Copy Constructor");
-	target = c.get_target();
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string in_target)
@@ -39,6 +40,7 @@ void ShrubberyCreationForm::set_target(std::string input) { target = input; }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	std::string filename;
 	std::ofstream file;
 
 	if (this->get_form_signed() == false)
@@ -50,8 +52,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	{
 		throw GradeTooLowException();
 	}
-
-	file.open(target + "_shrubbery");
+	filename = target + "_shrubbery";
+	file.open(filename.c_str(), std::ofstream::out | std::ofstream::trunc);
 
 	file << ""
 		 << "                 * *              " << '\n'
@@ -70,7 +72,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		 << "                :###              " << '\n'
 		 << "                ;###              " << '\n'
 		 << "              ,####.              " << '\n'
-		 << "  ||||||||||.######.||||||||||    " << '\n'
+		 << "            .######.              " << '\n'
 		 << std::endl;
 	file.close();
 }

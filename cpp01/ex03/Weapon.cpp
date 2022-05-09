@@ -32,7 +32,7 @@ Weapon &Weapon::operator=(const Weapon &assign)
 }
 
 // --------------------------- Getters && Setters -------------------------- //
-std::string Weapon::getType() const
+const std::string Weapon::getType() const
 {
 	// _AUTO(33, "Getter");
 	return _type;

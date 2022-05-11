@@ -2,3 +2,6 @@ cpp06 :
 - fix ex00 [ ]
    - detect NAN and make more tests
    - filter out invalid input
+
+cpp07 :
+-  ex02 [ ]

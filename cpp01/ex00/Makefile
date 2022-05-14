@@ -74,7 +74,7 @@ gen_class:
 
 run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME)\e[0m\n"
-	# @read -n 1 -p "Press any key to continue ..."
+	-@read -n 1 -p "Press any key to continue ..."
 	pwd
 
 	./$(NAME)

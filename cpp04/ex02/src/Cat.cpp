@@ -8,7 +8,7 @@ Cat::Cat()
 	_CAT_AUTO(32, "Default Constructor");
 }
 
-Cat::Cat(const t &c)
+Cat::Cat(const t &c) : Animal()
 {
 	(*this) = c;
 	_CAT_AUTO(32, "Copy Constructor");
@@ -40,7 +40,7 @@ Brain &Cat::get_brain() const { return *brain; }
 
 // --------------------------------- Methods ------------------------------- //
 
-void Cat::makeSound()const
+void Cat::makeSound() const
 {
 	std::cout << "Meow\n";
 }

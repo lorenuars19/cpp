@@ -8,7 +8,7 @@ Dog::Dog()
 	_DOG_AUTO(32, "Default Constructor");
 }
 
-Dog::Dog(const t &c)
+Dog::Dog(const t &c) : Animal()
 {
 	(*this) = c;
 	_DOG_AUTO(32, "Copy Constructor");

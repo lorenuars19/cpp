@@ -38,6 +38,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
+	pwd
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(BIN_DIR):

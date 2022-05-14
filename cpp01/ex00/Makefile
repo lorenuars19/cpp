@@ -34,7 +34,7 @@ OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
 .PHONY: all dir re clean fclean run
 
-all : $(NAME)
+all : $(NAME) run
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
@@ -75,5 +75,6 @@ gen_class:
 run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME)\e[0m\n"
 	@read -n 1 -p "Press any key to continue ..."
+	pwd
 
 	./$(NAME)

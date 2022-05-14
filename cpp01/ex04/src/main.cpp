@@ -1,7 +1,9 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
+
+typedef unsigned long u_long;
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +22,7 @@ int main(int argc, char *argv[])
 	std::string s2 = std::string(argv[3]);
 
 	// open input file for reading
-	std::ifstream input_file(filename);
+	std::ifstream input_file(filename.c_str());
 	if (!input_file.good())
 	{
 		std::cerr << "\033[91mError: " << filename
@@ -29,7 +31,8 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 	// open ouput file for writing
-	std::ofstream output_file(filename + ".replace", std::ofstream::out | std::ofstream::trunc);
+	std::string outfile = filename + ".replace";
+	std::ofstream output_file(outfile.c_str(), std::ofstream::out | std::ofstream::trunc);
 	if (!output_file.good())
 	{
 		std::cerr << "\033[91mError: cannot open " << filename + ".replace"

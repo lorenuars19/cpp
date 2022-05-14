@@ -72,7 +72,7 @@ dbg_san: re all
 dbg_lek: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address -fsanitize=leak
 dbg_lek: export LSAN_OPTIONS=report_objects=1
 dbg_lek: export ASAN_OPTIONS=detect_leaks=1
-dbg_lek: CXX = g++_
+dbg_lek: CXX = g++
 dbg_lek: re all
 
 gen_class:

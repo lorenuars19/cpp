@@ -36,22 +36,22 @@ public:
 		delete[] arr;
 	}
 
-	Array(const Array &c)
+	Array(const Array &c) : len(c.len)
 	{
 		std::cout << "Copy Constructor called len(" << len << ") [" << this << "] " << __PRETTY_FUNCTION__ << std::endl;
 
 		*this = c;
 	}
 
-	Array &operator=(const Array &c) const
+	Array &operator=(const Array &c)
 	{
-		Array *new_arr = new Array(c);
-		new_arr->arr = new T[len];
+		len = c.len;
+		arr = new T[len];
 		for (size_t i = 0; i < len; i++)
 		{
-			new_arr->arr[i] = c.arr[i];
+			arr[i] = c.arr[i];
 		}
-		return (new_arr);
+		return (*this);
 	}
 
 	T &operator[](int in_index)

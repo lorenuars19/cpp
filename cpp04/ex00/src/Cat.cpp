@@ -7,7 +7,7 @@ Cat::Cat()
 	_CAT_AUTO(32, "Default Constructor");
 }
 
-Cat::Cat(const t &c)
+Cat::Cat(const t &c) : Animal()
 {
 	(void)c;
 	_CAT_AUTO(32, "Copy Constructor");

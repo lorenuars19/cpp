@@ -9,7 +9,7 @@ FragTrap::FragTrap()
 	_FRAGTRAP_AUTO(32, "Default Constructor");
 }
 
-FragTrap::FragTrap(const t &c)
+FragTrap::FragTrap(const t &c) : ClapTrap(c.get_name())
 {
 	(void)c;
 	_FRAGTRAP_AUTO(32, "Copy Constructor");

@@ -9,7 +9,7 @@ ScavTrap::ScavTrap()
 	_SCAVTRAP_AUTO(32, "Default Constructor");
 }
 
-ScavTrap::ScavTrap(const t &c)
+ScavTrap::ScavTrap(const t &c) : ClapTrap(c.get_name())
 {
 	gate_mode = c.get_gate_mode();
 	_SCAVTRAP_AUTO(32, "Copy Constructor");

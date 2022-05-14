@@ -22,7 +22,7 @@ Fixed::Fixed(int const value) : _value(value)
 	_value = value << _frac;
 }
 
-Fixed::Fixed(float const fl) : _value(((int)fl << _frac) + std::roundf((fl - (int)fl) * 256))
+Fixed::Fixed(float const fl) : _value(((int)fl << _frac) + roundf((fl - (int)fl) * 256))
 {
 	_FIXED_AUTO(32, "Fields Constructor (float)");
 }

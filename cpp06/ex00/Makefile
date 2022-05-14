@@ -80,33 +80,32 @@ gen_class:
 run: RUN_ARGS ?=
 run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME) [$(RUN_ARGS)]\e[0m\n"
-	@read -n 1 -p "Press any key to continue ..."
+
 
 	-./$(NAME) $(RUN_ARGS)
 
 	./$(NAME) "a"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "42"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "a423"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "-19.422f"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "+42.01919"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "90u23r0823"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "+inff"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "-inff"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "nanf"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "nan"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "+inf"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) "-inf"
-	@read -n 1 -p "Press any key to continue ..."
+
 	./$(NAME) ""
-	@read -n 1 -p "Press any key to continue ..."

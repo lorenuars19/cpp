@@ -79,14 +79,14 @@ gen_class:
 run: RUN_ARGS ?=
 run:
 	@printf "\e[34;1m>./ Running -- ./$(NAME) [$(RUN_ARGS)]\e[0m\n"
-	@read -n 1 -p "Press any key to continue ..."
+
 
 	-./$(NAME) $(RUN_ARGS)
 	-./$(NAME) tet.txt "." "."
 
-	@read -n 1 -p "Press any key to continue ..."
+
 	-./$(NAME) text.txt "rep" "-"
-	@read -n 1 -p "Press any key to continue ..."
+
 	-./$(NAME) text.txt "." "-"
-	@read -n 1 -p "Press any key to continue ..."
+
 	-./$(NAME) text.txt $$'me\nif' $$'you\tdo'

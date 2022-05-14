@@ -60,7 +60,6 @@ debug_san: re all
 
 run: re
 	@printf "\e[34;1m>./ Running -- ./$(NAME)\e[0m\n"
-	@read -n 1 -p "Press any key to continue ..."
 	./$(NAME)
 
 .PHONY: all dir re clean fclean

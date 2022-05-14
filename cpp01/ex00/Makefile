@@ -34,7 +34,7 @@ OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
 .PHONY: all dir re clean fclean run
 
-all : $(NAME) run
+all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@printf "\e[33;1m&&& Linking $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"

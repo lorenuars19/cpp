@@ -58,9 +58,11 @@ int Span::shortestSpan()
 int Span::longestSpan()
 {
 	check_valid_span();
-	typedef std::pair<std::vector<int>::iterator, std::vector<int>::iterator> t_vecp;
-	t_vecp p = std::minmax_element(vec.begin(), vec.end());
-	return (*p.second - *p.first);
+	std::vector<int>::iterator min;
+	std::vector<int>::iterator max;
+	min = std::min_element(vec.begin(), vec.end());
+	max = std::max_element(vec.begin(), vec.end());
+	return (*max - *min);
 }
 
 void Span::check_valid_span()

@@ -35,13 +35,19 @@ private:
 #define _ARG(arg) #arg << "(" << arg << ") "
 #endif /* _ARG */
 
-#define _FRAGTRAP_ARGS ""
-#define _FRAGTRAP_AUTO(COLOR_CODE, TEXT)                        \
-	std::cout << "{ \e[" << COLOR_CODE << ";1m"                 \
-			  << TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \
-			  << "[\033[34;47m" << this                         \
-			  << "\033[0m]\033[0m: " << _FRAGTRAP_ARGS          \
-			  << "}" << std::endl;
+#define _FRAGTRAP_ARGS \
+	_ARG(get_name())   \
+	_ARG(get_hp())     \
+	_ARG(get_ep())     \
+	_ARG(get_ap())
+
+#define _FRAGTRAP_AUTO(COLOR_CODE, TEXT)                  \
+	std::cout                                             \
+		<< "{ \e[" << COLOR_CODE << ";1m"                 \
+		<< TEXT << " " << __PRETTY_FUNCTION__ << "\e[0m " \
+		<< "[\033[34;47m" << this                         \
+		<< "\033[0m]\033[0m: " << _FRAGTRAP_ARGS          \
+		<< "}" << std::endl;
 #else
 
 #define _FRAGTRAP_AUTO(x, y) ;

@@ -14,13 +14,18 @@ int main()
 	std::cout << "a++ : " << a++ << std::endl;
 	std::cout << "a : " << a << std::endl;
 
+	std::cout << "--a : " << --a << std::endl;
+	std::cout << "a : " << a << std::endl;
+	std::cout << "a-- : " << a-- << std::endl;
+	std::cout << "a : " << a << std::endl;
+
 	a = Fixed(3);
 	std::cout << "a = 3 == " << a << std::endl;
 
-	std::cout << "a + b : " << Fixed(a + b) << std::endl;
-	std::cout << "a - b : " << Fixed(a - b) << std::endl;
-	std::cout << "a / b : " << Fixed(a / b) << std::endl;
-	std::cout << "a * b : " << Fixed(a * b) << std::endl;
+	std::cout << "a + b : " << a + b << std::endl;
+	std::cout << "a - b : " << a - b << std::endl;
+	std::cout << "a / b : " << a / b << std::endl;
+	std::cout << "a * b : " << a * b << std::endl;
 
 	std::cout << "b : " << b << std::endl;
 	std::cout << "max(a,b) : " << Fixed::max(a, b) << std::endl;

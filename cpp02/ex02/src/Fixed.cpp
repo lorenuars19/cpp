@@ -93,6 +93,18 @@ Fixed Fixed::operator++(int)
 	return tmp;
 }
 
+Fixed Fixed::operator--()
+{
+	_value--;
+	return *this;
+}
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	_value--;
+	return tmp;
+}
+
 // --------------------------- Getters && Setters -------------------------- //
 
 // --------------------------------- Methods ------------------------------- //

@@ -84,28 +84,24 @@ run:
 
 	-./$(NAME) $(RUN_ARGS)
 
-	./$(NAME) "a"
-
+	./$(NAME) ""
 	./$(NAME) "42"
-
 	./$(NAME) "a423"
-
 	./$(NAME) "-19.422f"
-
 	./$(NAME) "+42.01919"
-
 	./$(NAME) "90u23r0823"
 
 	./$(NAME) "+inff"
-
 	./$(NAME) "-inff"
-
 	./$(NAME) "nanf"
-
 	./$(NAME) "nan"
-
 	./$(NAME) "+inf"
-
 	./$(NAME) "-inf"
 
-	./$(NAME) ""
+	./$(NAME) $$'\n'
+	./$(NAME) "-"
+	./$(NAME) "+"
+	./$(NAME) ".65"
+	./$(NAME) "42."
+	./$(NAME) "4f2.19"
+	./$(NAME) "f42.19"

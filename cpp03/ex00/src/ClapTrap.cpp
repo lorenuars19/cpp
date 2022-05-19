@@ -72,6 +72,7 @@ void ClapTrap::attack(const std::string &target)
 	std::cout << " attacks " << target
 			  << " causing " << ap
 			  << " points of damage" << std::endl;
+	ep--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -103,4 +104,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	std::cout << " is repaired of " << amount << " hp" << std::endl;
 	hp += amount;
+	ep--;
 }

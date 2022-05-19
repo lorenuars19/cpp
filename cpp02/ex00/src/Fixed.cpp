@@ -9,7 +9,7 @@ Fixed::Fixed()
 
 Fixed::Fixed(const t &c)
 {
-	_value = c.get_value();
+	*this = c;
 	_FIXED_AUTO(32, "Copy Constructor");
 }
 
@@ -22,7 +22,8 @@ Fixed::~Fixed()
 
 Fixed &Fixed::operator=(const t &a)
 {
-	_value = a.get_value();
+	_FIXED_AUTO(33, "Copy assignment called");
+	_value = a._value;
 	return *this;
 }
 

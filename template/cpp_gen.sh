@@ -110,6 +110,7 @@ ${CLASS_NAME}::${CLASS_NAME}()
 ${CLASS_NAME}::${CLASS_NAME}(const ${CLASS_NAME}& c) ${ATTS_CONSTR_COPY}
 {
 	_${UP_CLASS_NAME}_AUTO(32, "Copy Constructor");
+	*this = c;
 }
 
 ${CLASS_NAME}::${CLASS_NAME}(${ATTS_CONSTR_ARGS}) ${ATTS_CONSTR_ARGS_INIT}
@@ -224,8 +225,8 @@ function gen_attributes {
 		ATTS_CONSTR_ARGS_INIT+="${ATT_NAME}(in_${ATT_NAME})"
 		ATTS_MACRO+="_ARG(${ATT_NAME})"
 
-		ATTS_CONSTR_COPY+="${ATT_NAME}(c.get_${ATT_NAME}())"
-		ATTS_COPY+="${ATT_NAME} = c.get_${ATT_NAME}();"
+		ATTS_CONSTR_COPY+="${ATT_NAME}(c.${ATT_NAME})"
+		ATTS_COPY+="${ATT_NAME} = c.${ATT_NAME};"
 
 		ATTS_GETTER_SETTER_DECL+="${ATT_TYPE} get_${ATT_NAME}() const;"$'\n'$'\t'
 		ATTS_GETTER_SETTER_DECL+="void set_${ATT_NAME}(${ATT_TYPE} input);"$'\n'$'\t'

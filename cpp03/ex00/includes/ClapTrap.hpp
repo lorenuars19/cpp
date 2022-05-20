@@ -28,14 +28,14 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	void displayStatus();
-	int deadCheck();
-
 private:
 	std::string name;
 	unsigned int hp;
 	unsigned int ep;
 	unsigned int ap;
+
+	int deadCheck();
+	void displayStatus();
 };
 
 #ifndef NO_DEBUG

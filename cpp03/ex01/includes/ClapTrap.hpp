@@ -32,14 +32,16 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	void displayStatus();
-	int deadCheck();
-
 private:
 	std::string name;
 	unsigned int hp;
 	unsigned int ep;
 	unsigned int ap;
+
+	virtual void displayStatus();
+
+protected:
+	int deadCheck();
 };
 
 #ifndef NO_DEBUG

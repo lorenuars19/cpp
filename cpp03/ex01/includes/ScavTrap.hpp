@@ -23,12 +23,13 @@ public:
 	// --------------------------- Getters && Setters -------------------------- //
 	bool get_gate_mode() const;
 	// --------------------------------- Methods ------------------------------- //
-	void displayStatus();
 
 	void guardGate();
 
 private:
 	bool gate_mode;
+
+	void displayStatus();
 };
 
 #ifndef NO_DEBUG

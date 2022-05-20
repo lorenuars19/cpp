@@ -44,6 +44,7 @@ bool ScavTrap::get_gate_mode() const
 }
 
 // --------------------------------- Methods ------------------------------- //
+
 void ScavTrap::displayStatus()
 {
 	std::cout << "\e[34;1mScavTrap [" << this
@@ -57,9 +58,8 @@ void ScavTrap::displayStatus()
 
 void ScavTrap::guardGate()
 {
-	ClapTrap::displayStatus();
 	displayStatus();
-	if (deadCheck())
+	if (ClapTrap::deadCheck())
 	{
 		return;
 	}

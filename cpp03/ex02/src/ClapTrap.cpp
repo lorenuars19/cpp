@@ -8,11 +8,8 @@ ClapTrap::ClapTrap() : name(""), hp(10), ep(10), ap(0)
 
 ClapTrap::ClapTrap(const t &c)
 {
-	name = c.get_name();
-	hp = c.get_hp();
-	ep = c.get_ep();
-	ap = c.get_ap();
 	_CLAPTRAP_AUTO(32, "Copy Constructor");
+	*this = c;
 }
 
 ClapTrap::ClapTrap(std::string input_name) : name(input_name), hp(10), ep(10), ap(0)
@@ -38,10 +35,13 @@ ClapTrap &ClapTrap::operator=(const t &a)
 // --------------------------- Getters && Setters -------------------------- //
 std::string ClapTrap::get_name() const { return name; }
 void ClapTrap::set_name(std::string input_name) { name = input_name; }
+
 int ClapTrap::get_hp() const { return hp; }
 void ClapTrap::set_hp(unsigned int input) { hp = input; }
+
 int ClapTrap::get_ep() const { return ep; }
 void ClapTrap::set_ep(unsigned int input) { ep = input; }
+
 int ClapTrap::get_ap() const { return ap; }
 void ClapTrap::set_ap(unsigned int input) { ap = input; }
 
@@ -49,8 +49,7 @@ void ClapTrap::set_ap(unsigned int input) { ap = input; }
 
 void ClapTrap::displayStatus()
 {
-	std::cout << "\e[34;1mClapTrap [" << this
-			  << "] name '" << name
+	std::cout << "\e[34;1mClapTrap [" << this << "] name '" << name
 			  << "' hp " << hp
 			  << ", ep " << ep
 			  << ", ap " << ap
@@ -76,8 +75,7 @@ void ClapTrap::attack(const std::string &target)
 	}
 	std::cout << " attacks " << target
 			  << " causing " << ap
-			  << " points of damage";
-	std::cout << std::endl;
+			  << " points of damage" << std::endl;
 	ep--;
 }
 
@@ -92,8 +90,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	{
 		amount = hp;
 	}
-	std::cout << " takes " << amount
-			  << " points of damage";
+	std::cout << " takes " << amount << " of damage";
 	hp -= amount;
 	if (hp <= 0)
 	{
@@ -109,9 +106,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		return;
 	}
-	std::cout << " is repaired of " << amount
-			  << " hp";
-	std::cout << std::endl;
+	std::cout << " is repaired of " << amount << " hp" << std::endl;
 	hp += amount;
 	ep--;
 }

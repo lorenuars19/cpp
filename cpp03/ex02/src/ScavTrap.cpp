@@ -11,7 +11,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(const t &c) : ClapTrap(c.get_name())
 {
-	gate_mode = c.get_gate_mode();
+	*this = c;
 	_SCAVTRAP_AUTO(32, "Copy Constructor");
 }
 
@@ -44,6 +44,7 @@ bool ScavTrap::get_gate_mode() const
 }
 
 // --------------------------------- Methods ------------------------------- //
+
 void ScavTrap::displayStatus()
 {
 	std::cout << "\e[34;1mScavTrap [" << this
@@ -57,9 +58,8 @@ void ScavTrap::displayStatus()
 
 void ScavTrap::guardGate()
 {
-	ClapTrap::displayStatus();
 	displayStatus();
-	if (deadCheck())
+	if (ClapTrap::deadCheck())
 	{
 		return;
 	}

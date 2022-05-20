@@ -8,8 +8,8 @@ ClapTrap::ClapTrap() : name(""), hp(10), ep(10), ap(0)
 
 ClapTrap::ClapTrap(const t &c)
 {
-	*this = c;
 	_CLAPTRAP_AUTO(32, "Copy Constructor");
+	*this = c;
 }
 
 ClapTrap::ClapTrap(std::string input_name) : name(input_name), hp(10), ep(10), ap(0)

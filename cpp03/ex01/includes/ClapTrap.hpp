@@ -31,14 +31,13 @@ public:
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+	virtual void displayStatus();
 
 private:
 	std::string name;
 	unsigned int hp;
 	unsigned int ep;
 	unsigned int ap;
-
-	virtual void displayStatus();
 
 protected:
 	int deadCheck();

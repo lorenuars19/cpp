@@ -32,7 +32,7 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 
-	void displayStatus();
+	virtual void displayStatus();
 	int deadCheck();
 
 private:

@@ -51,7 +51,6 @@ void FragTrap::displayStatus()
 
 void FragTrap::highFiveGuys()
 {
-	ClapTrap::displayStatus();
 	displayStatus();
 	std::cout << "High five guys" << std::endl;
 }

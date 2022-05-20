@@ -6,6 +6,7 @@ int main()
 	ClapTrap a;
 	ClapTrap b("bob");
 	ScavTrap c("ali");
+	ScavTrap d(c);
 
 	a.takeDamage(10);
 	a.takeDamage(10);

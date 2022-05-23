@@ -17,7 +17,7 @@ Dog::Dog(const t &c) : Animal()
 // ------------------------------ Destructor ------------------------------- //
 Dog::~Dog()
 {
-	// delete brain;
+	delete brain;
 	_DOG_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //

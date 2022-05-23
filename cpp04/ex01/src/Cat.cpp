@@ -17,7 +17,7 @@ Cat::Cat(const t &c) : Animal()
 // ------------------------------ Destructor ------------------------------- //
 Cat::~Cat()
 {
-	// delete brain;
+	delete brain;
 	_CAT_AUTO(31, "Destructor called");
 }
 // ------------------------------- Operators ------------------------------- //

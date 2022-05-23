@@ -20,11 +20,11 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/ClapTrap.cpp \
-	./src/main.cpp \
+	././ClapTrap.cpp \
+	././main.cpp \
 
 HEADERS := \
-	./includes/ClapTrap.hpp\
+	././ClapTrap.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

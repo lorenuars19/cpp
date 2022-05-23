@@ -20,13 +20,13 @@ SHELL := bash
 # **************************************************************************** #
 
 SRCS := \
-	./src/ClapTrap.cpp \
-	./src/main.cpp \
-	./src/ScavTrap.cpp \
+	././ClapTrap.cpp \
+	././main.cpp \
+	././ScavTrap.cpp \
 
 HEADERS := \
-	./includes/ClapTrap.hpp\
-	./includes/ScavTrap.hpp\
+	././ClapTrap.hpp\
+	././ScavTrap.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

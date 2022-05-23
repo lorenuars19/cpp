@@ -27,10 +27,10 @@ SRCS := \
 	./src/main.cpp \
 
 HEADERS := \
-	./includes/Animal.hpp\
-	./includes/Brain.hpp\
-	./includes/Cat.hpp\
-	./includes/Dog.hpp\
+	././includes/Animal.hpp\
+	././includes/Brain.hpp\
+	././includes/Cat.hpp\
+	././includes/Dog.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

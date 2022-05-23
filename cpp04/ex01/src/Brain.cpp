@@ -12,7 +12,7 @@ Brain::Brain()
 
 Brain::Brain(const t &c)
 {
-	(*this) = c;
+	*this = c;
 	_BRAIN_AUTO(32, "Copy Constructor");
 }
 

@@ -3,7 +3,7 @@
 // ----------------------------- Constructors ------------------------------ //
 Animal::Animal(const t &c)
 {
-	type = c.type;
+	*this = c;
 	_ANIMAL_AUTO(32, "Copy Constructor");
 }
 

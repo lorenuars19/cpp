@@ -9,6 +9,7 @@ PresidentialPardonForm::PresidentialPardonForm()
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &c)
 	: Form(c.get_name(), c.get_sign_grade(), c.get_exec_grade()), target(c.get_target())
 {
+	*this = c;
 	_PRESIDENTIALPARDONFORM_AUTO(32, "Copy Constructor");
 }
 
@@ -27,7 +28,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &c)
 {
-	*this = c;
+	target = c.target;
 	return *this;
 }
 

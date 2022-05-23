@@ -73,23 +73,18 @@ int main()
 
 	Base x;
 
+	std::cout << "=== Identify with base class :\n";
 	identify(&x);
 	identify(x);
-	std::cout << "-------------------------\n";
-
+	std::cout << "\n";
+	std::cout << "=== Identify with generated Instances :\n";
 	for (int i = 0; i < 5; i++)
 	{
 		Base *test;
 		test = generate();
+		std::cout << "From pointer   : ";
 		identify(test);
-		delete test;
-	}
-	std::cout << "-------------------------\n";
-
-	for (int i = 0; i < 5; i++)
-	{
-		Base *test;
-		test = generate();
+		std::cout << "From reference : ";
 		identify(*test);
 		delete test;
 	}

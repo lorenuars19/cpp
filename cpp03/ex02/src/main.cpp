@@ -36,4 +36,10 @@ int main()
 	d.highFiveGuys();
 	d.takeDamage(110);
 	d.highFiveGuys();
+
+	ClapTrap ener("Energy");
+	for (int i = 0; i < 11; i++)
+	{
+		ener.attack("Dummy");
+	}
 }

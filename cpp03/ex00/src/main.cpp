@@ -14,4 +14,10 @@ int main()
 	b.attack(c.get_name());
 	b.beRepaired(2);
 	b.takeDamage(11);
+
+	ClapTrap ener("Energy");
+	for (int i = 0; i < 11; i++)
+	{
+		ener.attack("Dummy");
+	}
 }

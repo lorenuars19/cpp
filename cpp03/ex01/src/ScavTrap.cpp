@@ -59,7 +59,7 @@ void ScavTrap::displayStatus()
 void ScavTrap::guardGate()
 {
 	displayStatus();
-	if (ClapTrap::deadCheck())
+	if (deadCheck())
 	{
 		return;
 	}

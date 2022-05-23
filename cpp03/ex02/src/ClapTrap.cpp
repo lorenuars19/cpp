@@ -58,9 +58,14 @@ void ClapTrap::displayStatus()
 
 int ClapTrap::deadCheck()
 {
-	if (hp <= 0 || ep <= 0)
+	if (hp <= 0)
 	{
 		std::cout << "is dead" << std::endl;
+		return (1);
+	}
+	if (ep <= 0)
+	{
+		std::cout << "is out of energy" << std::endl;
 		return (1);
 	}
 	return (0);

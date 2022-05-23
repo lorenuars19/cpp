@@ -65,4 +65,5 @@ void ScavTrap::guardGate()
 	}
 	std::cout << " Toggling Guate Garding mode " << std::endl;
 	gate_mode = !gate_mode;
+	set_ep(get_ep() - 1);
 }

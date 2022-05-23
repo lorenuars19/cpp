@@ -24,4 +24,10 @@ int main()
 	c.guardGate();
 	c.takeDamage(110);
 	c.guardGate();
+
+	ClapTrap ener("Energy");
+	for (int i = 0; i < 11; i++)
+	{
+		ener.attack("Dummy");
+	}
 }

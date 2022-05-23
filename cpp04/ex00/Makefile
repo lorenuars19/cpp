@@ -24,11 +24,15 @@ SRCS := \
 	./src/Cat.cpp \
 	./src/Dog.cpp \
 	./src/main.cpp \
+	./src/WrongAnimal.cpp \
+	./src/WrongCat.cpp \
 
 HEADERS := \
-	./includes/Animal.hpp\
-	./includes/Cat.hpp\
-	./includes/Dog.hpp\
+	././includes/Animal.hpp\
+	././includes/Cat.hpp\
+	././includes/Dog.hpp\
+	././includes/WrongAnimal.hpp\
+	././includes/WrongCat.hpp\
 
 ###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 

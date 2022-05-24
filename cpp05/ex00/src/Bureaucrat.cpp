@@ -9,8 +9,7 @@ Bureaucrat::Bureaucrat() : name(""), grade(0)
 Bureaucrat::Bureaucrat(const Bureaucrat &c)
 {
 	_BUREAUCRAT_AUTO(32, "Copy Constructor");
-	// name = c.get_name();
-	grade = c.get_grade();
+	*this = c;
 }
 
 Bureaucrat::Bureaucrat(const std::string in_name, int in_grade) : name(in_name), grade(0)

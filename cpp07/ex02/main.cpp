@@ -5,13 +5,18 @@
 int main(int, char **)
 {
 	Array<int> numbers(MAX_VAL);
+
+	Array<float> fnums(MAX_VAL);
+
 	int *mirror = new int[MAX_VAL];
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		const int value = rand();
+		const float fval = rand() * rand() / 125;
 		numbers[i] = value;
 		mirror[i] = value;
+		fnums[i] = fval;
 	}
 	// SCOPE
 	{

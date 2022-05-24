@@ -1,4 +1,7 @@
 #include "Span.hpp"
+
+#include <array>
+
 int main()
 {
 	Span sp = Span(5);
@@ -31,5 +34,14 @@ int main()
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	return 0;
+
+	Span spi(100);
+	std::array<int, 100> arr;
+	arr.fill(42);
+	arr[42] = -42;
+
+	spi.addNumber(arr.begin(), arr.end());
+	std::cout << spi.shortestSpan() << std::endl;
+	std::cout << spi.longestSpan() << std::endl;
+
 }

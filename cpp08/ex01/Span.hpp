@@ -46,12 +46,24 @@ public:
 	int shortestSpan();
 	int longestSpan();
 
+	template <class T> void addNumber(T begin, T end);
+
 private:
 	size_t size;
 	std::vector<int> vec;
 
 	void check_valid_span();
 };
+
+template <class T> void Span::addNumber(T begin, T end)
+{
+	while (begin != end)
+	{
+		this->addNumber(*begin);
+		begin++;
+	}
+}
+
 
 #ifndef NO_DEBUG
 

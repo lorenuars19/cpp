@@ -42,3 +42,4 @@ void FortyTwo::set_num(int input){ num = input; }
 
 
 // --------------------------------- Methods ------------------------------- //
+
